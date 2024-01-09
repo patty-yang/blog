@@ -20,7 +20,10 @@ export default defineConfig({
       ...readDirectory('other')
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/xiaoYangHAHAHA/MyBlog' }
+      {
+        icon: 'github',
+        link: 'https://github.com/SunnySeptemberBoy/SunnySeptemberBoy.github.io'
+      }
     ],
     lastUpdated: {
       text: '最后更新时间',
