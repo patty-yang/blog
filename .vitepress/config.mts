@@ -10,11 +10,10 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     // logo: '/logo.png',
-    nav: [
-      // { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/' }
-    ],
-
+    // nav: [
+    // { text: 'Home', link: '/' },
+    // { text: 'Examples', link: '/' }
+    // ],
     sidebar: [
       ...readDirectory('basic'),
       ...readDirectory('progress'),
