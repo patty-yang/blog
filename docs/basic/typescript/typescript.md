@@ -234,6 +234,14 @@ type S = ParamType<string> // -> string
 
   ```ts
   // Record<K, T>：构造一个类型，其属性名的类型为 K，属性值的类型为 T。
+  enum Keys {
+    Key1 = 'key1',
+    Key2 = 'key2'
+  }
+
+  type MyRecord = Record<Keys, number> //-> { key1: number key2: number;}
+
+  type MyRecord2 = Record<string, number> // -> { [key: string]: number;}
   ```
 
 - Pick
