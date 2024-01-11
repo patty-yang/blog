@@ -94,6 +94,49 @@ function add(first: number | string, second: number ｜ string) {
 }
 ```
 
+## typeof
+
+```ts
+// typeof操作符用于获取变量的类型，因此操作符后面接的始终是一个变量。
+const obj = {
+  name: 'CJ',
+  age: 18
+}
+
+type Test = typeof obj
+ ↓↓↓↓↓↓↓↓↓
+type Test = {
+  name: string
+  age: number
+}
+
+const types = ['A', 'B', 'C'] as const
+type TestType = typeof types // => "A" | "B" | "C"
+```
+
+## keyof
+
+```ts
+// keyof操作符后面接一个类型，生成由string或者number组成的联合字面量类型。
+type Test = {
+  name: string
+  gae: number
+}
+
+type TestKeys = keyof Test
+const k1: TestKeys = 'name'
+const k2: TestKeys = 'age'
+// Type '"other"' is not assignable to type 'keyof Test'.(2322)
+const k3: TestKeys = 'other'
+```
+
+```ts
+// 约束 key 只能是obj上存在的属性
+const fn = <T, K extends keyof T>(obj: T, key: K): T[K] => {
+  return obj[key]
+}
+```
+
 ## 枚举
 
 ```ts
