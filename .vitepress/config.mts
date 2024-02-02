@@ -16,6 +16,7 @@ export default defineConfig({
     // ],
     sidebar: [
       ...readDirectory('basic'),
+      ...readDirectory('books'),
       ...readDirectory('progress'),
       ...readDirectory('other')
     ],
