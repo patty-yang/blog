@@ -244,7 +244,7 @@ type S = ParamType<string> // -> string
 - Required
 
   ```ts
-  // Required<T> 将类型 T 中的所有属性都变为可选。
+  // Required<T> 将类型 T 中的所有属性都变为必选。
     interface ToDo {
       title?: string
       desc?: string
