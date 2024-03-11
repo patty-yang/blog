@@ -173,3 +173,17 @@ prototype : 是构造函数创建出来的实例，指向构造函数创建的�
 - react 使用 css module
 - vue 使用 scoped
   vue、react 项目已经做样式隔离了，没必要使用 qiankun 的样式隔离
+
+## unpkg
+
+- 搭建静态站点的 CDN
+
+## docker 针对不同环境抹平不同环境的差异性
+
+## x
+
+- useHooks context hoc
+
+  - 抽离 context provid
+
+- useSyncExternalStore react 外部的状态和 store 关联 -> 外部响应和 react 同步
