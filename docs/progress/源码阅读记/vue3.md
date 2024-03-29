@@ -1,5 +1,31 @@
-```js
-<script src="../dist/vue.global.js"></script>
+## Vue3
+
+## 根据过程分析源码
+
+- package.json
+- monorepo 项目的 package/包
+- 分析流程
+
+  - xxx.vue 文件要经过编译 **compiler-sfc**
+  - 应用初始化 **runtime-core**
+  - 组件挂载 **runtime-core**
+  - 数据响应式处理 **reactivity**
+  - 触发数据更新 **runtime-core**
+  - 将数据更新同步到视图 **runtime-dom**
+  - 卸载
+
+- 阶段
+  - sfc 编译
+  - 响应系统的初始化
+  - 依赖收集
+    `/packages/reactivity/src/collectionHandlers.ts`
+    一旦响应式中的属性被访问，通过调用 track 处理。
+    <!-- 1. proxy 代理，在 get 方法中，决定追踪策略，然后通过自定义的 track 进行属性追踪，在依赖 map 中追加对应的追踪逻辑 -->
+  - 响应式属性更新
+  - 重新渲染组件
+  - 更新完成
+  <!-- ```js
+  <script src="../dist/vue.global.js"></script>
 
 <div id="app">{{ count }}</div>
 
@@ -14,7 +40,8 @@
     }
   }).mount('#app')
 </script>
-```
+
+````
 
 ## createApp
 
@@ -69,7 +96,7 @@ export const createApp = ((...args) => {
   return app
 }) as CreateAppFunction<Element>
 
-```
+````
 
 **_第一步_**
 
@@ -237,4 +264,4 @@ class RefImpl<T> {
 
 ```
 
-## reactive
+## reactive -->

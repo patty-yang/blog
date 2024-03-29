@@ -187,3 +187,7 @@ prototype : 是构造函数创建出来的实例，指向构造函数创建的�
   - 抽离 context provid
 
 - useSyncExternalStore react 外部的状态和 store 关联 -> 外部响应和 react 同步
+
+## vue
+
+- `Vue `会在“next tick”更新周期中缓冲所有状态的修改，以确保不管你进行了多少次状态修改，每个组件都只会被更新一次。
