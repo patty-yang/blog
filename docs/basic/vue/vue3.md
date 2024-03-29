@@ -83,13 +83,3 @@ const showDialog = () => {
 }
 </script>
 ```
-
-Vue3 响应式及AST
-编译器的基本原理
-diff
-  diff 的目的是尽可能减少 dom 变更（reflow），找到可以复用的节点 
-  
-简单diff
-双端diff
-  新旧的节点进行头头尾尾，头尾尾头的一个比较吧
-快速diff
