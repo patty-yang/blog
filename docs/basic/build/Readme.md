@@ -114,5 +114,7 @@ module.exports = FileListPlugin
 
 ## loader 和 plugin 的区别
 
-- loader 是对资源 ast 进行的处理
-- plugin 是对功能的一些增强
+官方文档原文: `While loaders are used to transform certain types of modules, plugins can be leveraged to perform a wider range of tasks like bundle optimization, asset management and injection of environment variables.`
+
+- loader 是对资源 ast 进行的处理，一般是将某个语法统一处理为一个统一的语法
+- plugin 是对功能的一些增强，一般是在打包前或打包后对结果进行再次操作
