@@ -46,21 +46,21 @@
     data() {
       return {
         isShow: false,
-        items: [1, 2, 3, 4],
-      };
+        items: [1, 2, 3, 4]
+      }
     },
     methods: {
       add() {
-        this.items.splice(this.randomIndex(), 0, ++this.items.length);
+        this.items.splice(this.randomIndex(), 0, ++this.items.length)
       },
       randomIndex() {
-        return Math.floor(Math.random() * this.items.length);
+        return Math.floor(Math.random() * this.items.length)
       },
       remove() {
-        this.items.splice(this.randomIndex(), 1);
-      },
-    },
-  };
+        this.items.splice(this.randomIndex(), 1)
+      }
+    }
+  }
   </script>
 
   <style scoped>
@@ -125,21 +125,21 @@ const MyPlugin = {
   install(Vue, options) {
     // 全局的函数
     Vue.myGlobalsFn = function (options) {
-      conosle.log("install");
-    };
+      conosle.log('install')
+    }
     // 全局指令
-    Vue.derective("my-directive", {
-      bind(el, binding, vnode, oldvalue) {},
-    });
+    Vue.derective('my-directive', {
+      bind(el, binding, vnode, oldvalue) {}
+    })
     Vue.mixin({
-      created() {},
-    });
+      created() {}
+    })
     // 等。。。
-  },
-};
+  }
+}
 
-const app = createApp();
-app.use(MyPlugin);
+const app = createApp()
+app.use(MyPlugin)
 ```
 
 ```ts
@@ -206,18 +206,4 @@ app.use(MyPlugin);
         addDevtools(app, router, matcher)
       }
     },
-```
-
-## key 的作用
-
-- 源代码对比在 core/vnode/patch sameVnode
-- 做了什么?
-  - 极大程度的复用老节点
-    - 通过递归对比
-- 有了 key 之后，就能明确的知道新旧 children 中节点的映射关系，知道映射关系后，就很容易判断 children 节点是否可被服用： 只要遍历新 children 中寻找是否存在具有相同 key 值的节点。
-
-```text
-  在响应式系统中，大量源码在做性能优化的事情，其中包括 key
-  在diff 过程中，始终尝试花费最小代价，最大程度的进行节点复用
-  但是除了key 还有节点是否类似的判断
 ```
