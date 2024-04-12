@@ -3,7 +3,7 @@ import { readDirectory } from '../docs'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  outDir: 'dist',
+  outDir: 'public',
   lang: 'zh-CN',
   title: '小杨的进阶之路',
   description: ' ',
