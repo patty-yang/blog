@@ -39,7 +39,7 @@ jobs:
         with:
           node-version: 18
           cache: pnpm # 或 pnpm / yarn
-          version: 8
+          version: 6
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Install dependencies
