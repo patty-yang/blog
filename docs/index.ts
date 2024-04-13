@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-const regex = /\.md$/
+const mdExtension = /\.md$/
 
 interface Item {
   text: string
@@ -10,6 +10,9 @@ interface Item {
   link: string | undefined
 }
 
+const isMdFile = (fileName: string): boolean => {
+  return mdExtension.test(fileName)
+}
 // 读取目录下的文件和文件夹
 export const readDirectory = (directoryPath): Item[] => {
   // 获取目录下的所有子项
@@ -23,10 +26,12 @@ export const readDirectory = (directoryPath): Item[] => {
     // 判断子项是文件还是文件夹
     const isFile = fs.statSync(path.resolve(__dirname, itemPath)).isFile()
     // 生成子项对象
+
     const itemObject: Item = {
       text: isFile
-        ? `${index + 1}.${item.replace(regex, '')}`
-        : `${item.replace(regex, '')}`,
+        ? ((isMdFile(item) &&
+            `${index + 1}.${item.replace(mdExtension, '')}`) as string)
+        : `${item.replace(mdExtension, '')}`,
       isFile: isFile,
       items: [],
       link: isFile ? `/docs/${itemPath}` : undefined
