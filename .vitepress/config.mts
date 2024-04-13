@@ -1,7 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { readDirectory } from '../docs'
 
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
   outDir: 'dist',
   lang: 'zh-CN',
@@ -16,17 +15,17 @@ export default defineConfig({
     // { text: 'Examples', link: '/' }
     // ],
     sidebar: [
-      ...readDirectory('base'),
-      ...readDirectory('basic'),
-      ...readDirectory('books'),
-      ...readDirectory('progress'),
-      ...readDirectory('other')
+      ...readDirectory('base')
+      // ...readDirectory('basic'),
+      // ...readDirectory('books'),
+      // ...readDirectory('progress'),
+      // ...readDirectory('other')
     ],
     socialLinks: [
-      {
-        icon: 'github',
-        link: 'https://github.com/SunnySeptemberBoy/SunnySeptemberBoy.github.io'
-      }
+      // {
+      //   icon: 'github',
+      //   link: 'https://github.com/SunnySeptemberBoy/SunnySeptemberBoy.github.io'
+      // }
     ],
     lastUpdated: {
       text: '最后更新时间',
