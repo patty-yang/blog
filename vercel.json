@@ -1,7 +1,11 @@
 {
   "rewrites": [
     {
-      "source": "/img",
+      "source": "/img/(.*",
+      "destination": "/api/proxy"
+    },
+    {
+      "source": "/2022",
       "destination": "/api/proxy"
     }
   ]
