@@ -1,0 +1,7 @@
+#!/bin/sh
+echo '11'
+branch=$(git rev-parse --symbolic --abbrev-ref HEAD)
+if [ "master" == "$branch" ]; then
+  echo ".git/hooks: 不能commit到 $branch 分支"
+  exit 1
+fi
