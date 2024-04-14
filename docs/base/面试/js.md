@@ -424,8 +424,31 @@ console.log(g.next()) // { value: 3, done: false }
 console.log(g.next()) // { value: undefined, done: true }
 ```
 
-## React 性能优化是怎么做的
+## 不新建第三方变量 交换两个变量的值
 
-## qiankun
+```javascript
+let a = 1
+let b = ((2)[(a, b)] = [b, a])
+```
+
+<!-- ## 防抖
+
+```javascript
+function debounce(fn, delay) {
+  let timer = null
+  return function () {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(() => {
+      fn.apply(this, arguments)
+    }, delay)
+  }
+}
+```
+
+## 节流 -->
+
+## React 性能优化是怎么做的
 
 ## vite
