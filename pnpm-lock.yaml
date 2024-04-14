@@ -8,6 +8,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.10.6
     version: 20.12.7
+  husky:
+    specifier: ^9.0.11
+    version: 9.0.11
   vitepress:
     specifier: 1.0.0-rc.35
     version: 1.0.0-rc.35(@types/node@20.12.7)
@@ -842,6 +845,12 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /husky@9.0.11:
+    resolution: {integrity: sha512-AB6lFlbwwyIqMdHYhwPe+kjOC3Oc5P3nThEoW/AaO2BX3vJDjWPFxYLxokUZOo6RNX20He3AaT8sESs9NJcmEw==}
+    engines: {node: '>=18'}
+    hasBin: true
+    dev: true
 
   /magic-string@0.30.9:
     resolution: {integrity: sha512-S1+hd+dIrC8EZqKyT9DstTH/0Z+f76kmmvZnkfQVmOpDEF9iVgdYif3Q/pIWHmCoo59bQVGW0kVL3e2nl+9+Sw==}
