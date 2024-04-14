@@ -7,15 +7,13 @@
     "preinstall": "npx only-allow pnpm",
     "dev": "vitepress dev",
     "build": "vitepress build",
-    "preview": "vitepress preview",
-    "deploy": "sh ./deploy.sh"
+    "preview": "vitepress preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.10.6",
-    "http-proxy-middleware": "^3.0.0",
     "vitepress": "1.0.0-rc.35",
     "vue": "^3.4.5"
   },
