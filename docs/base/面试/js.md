@@ -431,24 +431,57 @@ let a = 1
 let b = ((2)[(a, b)] = [b, a])
 ```
 
-<!-- ## 防抖
+## 防抖
 
 ```javascript
-function debounce(fn, delay) {
+function debounce(fn, delay = 200) {
   let timer = null
   return function () {
-    if (timer) {
-      clearTimeout(timer)
-    }
+    const _this = this
+    const args = [...arguments]
+    if (timer) return
     timer = setTimeout(() => {
-      fn.apply(this, arguments)
+      fn.apply(_this, args)
     }, delay)
   }
 }
 ```
 
-## 节流 -->
+## 节流
 
-## React 性能优化是怎么做的
+```javascript
+function throttle(fn, delay = 200) {
+  let timer = null
+  const _this = this
+  return function () {
+    timer = setTimeout(() => {
+      timer = null
+      fn.call(_this, arguments)
+    }, delay)
+  }
+}
+```
 
-## vite
+## let const var
+
+```js
+// var 的话会将变量提升到顶层，与解析结果是 undefined
+// let const 不能被预解析提前调用的话会报错
+
+// var 可以重复声明变量，会重新赋值
+// let const 不能重复，
+
+// var 每次循环时都会对这一个变量进行重新赋值，会覆盖，导致存储的是最终循环变量的值
+// let 循环时相当于触发了 一个代码块，每个代码块就是一个单独的独立作用域 不会覆盖之前的值
+
+// var声明的循环变量
+```
+
+## 深浅拷贝
+
+- 浅拷贝 拷贝的是 值的引用地址
+- 深拷贝 会忽略 undefined function
+  - 数组的拷贝
+  - 对象的拷贝
+
+## 继承
