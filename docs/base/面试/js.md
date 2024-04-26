@@ -485,3 +485,25 @@ function throttle(fn, delay = 200) {
   - 对象的拷贝
 
 ## 继承
+
+- 原型继承,如果 Super 实例上的属性如果是引用值，在修改时会同步修改造成引用问题
+
+```
+function Super(value) {
+  this.value = value
+}
+
+Super.property.say = function() {}
+
+function sub() {}
+sub.property = new Super()
+```
+
+- 原型继承
+  - 对一个对象进行浅克隆创建另一个对象
+
+```js
+const obj = { a: 1 }
+
+const test = Object.create(obj)
+```
