@@ -128,6 +128,13 @@ Function.prototype.bind2 = function (context, ...args) {
 }
 ```
 
+## 箭头函数和普通函数的区别
+
+- 不能使用 new 命令，
+  - 因为没有 this 所有不能通过 call apply bind 更改 this 指向
+  - 没有 prototype 属性，所以不能作为构造函数
+- 没有 arguments 参数
+
 ## new
 
 1. 返回对象，返回构造函数 prototype 上的属性
