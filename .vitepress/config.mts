@@ -16,10 +16,10 @@ export default defineConfig({
     // ],
     sidebar: [
       ...readDirectory('base'),
-      ...readDirectory('basic'),
-      ...readDirectory('books'),
-      ...readDirectory('progress'),
-      ...readDirectory('other')
+     // ...readDirectory('basic'),
+     // ...readDirectory('books'),
+     // ...readDirectory('progress'),
+     // ...readDirectory('other')
     ],
     socialLinks: [
       // {
