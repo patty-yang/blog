@@ -1,40 +1,6 @@
-<!-- ## 注册机制、异步加载、生命周期管理、通信机制、构建时集成应用及应用独立发布部署、安全隔离措施
-
-
- 匹配规则
-项目中是如何配置的 基础路径
-
-qiankun 基本配置流程
-主应用和子应用的基础路径
-路由匹配规则
-
-1. 在主应用中安装 qiankun，并在主应用中注册子应用
-   name entry container activeRule
-2. 在子应用中导出相应的 生命周期 钩子
-3. 配置子应用的打包配置
-4. > vue
-   > 在项目 src 目录中增加 `public-path.js`
-
-```js
-output: {
-  library: `${packageName}-[name]`,
-  libraryTarget: 'umd',
-  chunkLoadingGlobal: `webpackJsonp_${packageName}`,
-},
-```
-
-3.
-
----
-
-
--->
-
 ## qiankun 注册的基本流程是什么
 
-> vite 项目
-
-1. 在主应用中安装 qiankun，并在主应用中注册子应用`registerMicroApps`
+### 1. 在主应用中安装 qiankun，并在主应用中注册子应用`registerMicroApps`
 
 ```
   name
@@ -43,7 +9,17 @@ output: {
   container
 ```
 
-2. 改造子应用入口(render)，使用`vite-plugin-qiankun`
+### 2. 配置子应用的运行时环境，添加对应的生命周期
+
+```
+  bootstrap 初始胡
+  mount 挂载
+  unmount 卸载
+```
+
+> vite 项目
+
+改造子应用入口(render)，使用`vite-plugin-qiankun`
 
 ```js
 import {
@@ -101,3 +77,27 @@ plugins: [vue(), qiankun('sub-vue', { useDevMode })],
 ```
 
 > webpack 构建项目
+
+1. 在 src 下添加 public-path.js
+
+```js
+if (window.__POWERED_BY_QIANKUN__) {
+  // eslint-disable-next-line no-undef
+  __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__
+}
+```
+
+2. webpack
+
+   把子应用打包成 umd 库格式
+
+```js
+output: {
+  // 把子应用打包成 umd 库格式
+  library: `${name}-[name]`,
+  libraryTarget: 'umd',
+  jsonpFunction: `webpackJsonp_${name}`,
+},
+```
+
+3. react 使用 react-app-rewired 配置 -> config-overrides.js
