@@ -153,6 +153,51 @@ function objectFactory() {
 
 ## promise
 
+```js
+Promise.resolve()
+  .then(() => {
+    console.log(0)
+    return Promise.resolve(4)
+  })
+  .then((res) => {
+    console.log(res)
+  })
+
+Promise.resolve()
+  .then(() => {
+    console.log(1)
+  })
+  .then(() => {
+    console.log(2)
+  })
+  .then(() => {
+    console.log(3)
+  })
+  .then(() => {
+    console.log(5)
+  })
+// 解释
+
+// 1
+此时微队列为 0 1
+输出 0
+当返回状态是一个 promise 状态时，它的状态会保持一致，会把新的 promise 完成放到promise.then 中
+微队列更新为 1 promise.then(() => 状态更新为完成)
+// 2
+此时微队列为 1 promise.then(() => 状态更新为完成 )
+输出 0  输出 1
+1的 promise 完成，执行下一个 promise
+微队列更新为 promise.then(() => 状态更新为完成 )  2
+//3
+此时微队列为 2 () => 状态更新为完成
+输出0 输出1 输出2
+微队列更新为  () => 状态更新为完成  3
+// 4
+此时微队列为  3 () => 状态更新为完成
+输出 0 输出 1 输出 2 输出 3
+微队列更新为 状态更新完成 执行下一个 promise  -> 4 5
+```
+
 ### basic
 
 ```javascript
