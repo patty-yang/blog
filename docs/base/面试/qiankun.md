@@ -101,3 +101,16 @@ output: {
 ```
 
 3. react 使用 react-app-rewired 配置 -> config-overrides.js
+
+### 全局状态
+
+```js
+const actions = initGlobalState(state)
+
+actions.onGlobalStateChange((value, prev) => {
+  // value: 当前变更后的值
+  // prev: 变更前的值
+  // state 变更的时候就会触发
+  Object.assign(state, value)
+})
+```
