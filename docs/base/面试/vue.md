@@ -98,3 +98,18 @@ validator.addRule(minPlugin)
     - 如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，使用 index 作为 key 是没有问题的。
 
 ## 虚拟 DOM 的优缺点
+
+## watchEffect 于 watch 的区别
+
+- watch 需要明确监听哪个数据，在监听对象或数组时，需要开启 deep 选项才能深度监听其属性或元素的变化
+- watchEffect 自动进行响应式的收集依赖,但是回调函数无法获取到变化前后的值
+
+watchEffect 依赖收集方式 -> vue 依赖收集方式
+在运行函数时，会进行依赖收集，函数在运行过程中用到了那些响应式数据，响应式数据变化后这个函数就会重新运行，但是在收集依赖的时候，只会收集这个函数在同步代码中遇到的依赖
+
+```js
+watchEffect(async () => {
+  url.value = await fetchUrl()
+  videoRef.value.playbackRate = speed.value
+})
+```
