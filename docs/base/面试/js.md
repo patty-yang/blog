@@ -559,3 +559,8 @@ const obj = { a: 1 }
 
 const test = Object.create(obj)
 ```
+
+## map weekMap
+
+- Map 对象可以使用任何类型的值作为键，包括基本数据类型和对象类型，
+- 而 WeakMap 对象的键必须是对象类型
