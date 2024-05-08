@@ -98,3 +98,62 @@ validator.addRule(minPlugin)
     - 如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，使用 index 作为 key 是没有问题的。
 
 ## 虚拟 DOM 的优缺点
+
+## watchEffect 于 watch 的区别
+
+- watch 需要明确监听哪个数据，在监听对象或数组时，需要开启 deep 选项才能深度监听其属性或元素的变化
+- watchEffect 自动进行响应式的收集依赖,但是回调函数无法获取到变化前后的值
+
+watchEffect 依赖收集方式 -> vue 依赖收集方式
+在运行函数时，会进行依赖收集，函数在运行过程中用到了那些响应式数据，响应式数据变化后这个函数就会重新运行，但是在收集依赖的时候，只会收集这个函数在同步代码中遇到的依赖
+
+```js
+watchEffect(async () => {
+  url.value = await fetchUrl()
+  videoRef.value.playbackRate = speed.value
+})
+```
+
+## 双向绑定
+
+- vue2
+
+```text
+vue 实例在初始化的时候会通过一些列的init方法进行初始化methods、data、computed、其中就会通过Object.defineProperty 对data中的属性进行数据劫持，通过getter和setter来监听数据的变化，同时每个属性都会设置一个 Dep类(消息订阅) ,它内部维护了一个数组，用来记录所有的订阅者(watcher),然后通过 Compile 进行模版解析，将模版中的变量替换成对应的数据并更新视图。在属性值发生变化的时候会出发 setter 函数，setter 函数会调用 dep.notify() 通知所有的订阅者，订阅者就会调用 update 方法更新视图。
+```
+
+- vue3
+  proxy -> get ->
+  在 get 方法中决定追踪策略，然后通过定义的 track，在对应的依赖 map 中增加依赖追踪
+  使用了 WeakMap 来存储依赖关系，避免了 Vue2 中 Watcher 的内存泄漏问题。
+- weekMap
+- Set
+  - collectionHandles.ts
+    - mutable
+    - shallow
+    - shallowReadonly
+    - readonly
+- 有地方来访问 有内容变化的同时会通知
+  <!-- WeakMap set -->
+
+## 生命周期
+
+- beforeCreate
+- created
+- beforeMount
+- mounted
+- beforeUpdate
+- updated
+- beforeDestroy
+- destroyed
+
+## 组件通信
+
+- props/$emit
+- $parent/$children
+- $refs
+- eventBus
+- provide/inject
+- $emit/$on
+
+## 组件化
