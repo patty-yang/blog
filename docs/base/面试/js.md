@@ -564,3 +564,17 @@ const test = Object.create(obj)
 
 - Map 对象可以使用任何类型的值作为键，包括基本数据类型和对象类型，
 - 而 WeakMap 对象的键必须是对象类型
+
+## Map 和 Object 的区别
+
+- map 可以存储任意类型作为 key
+- object 的 key 必须是字符串或者 symbol
+
+- Map 中的键是有序的
+- object 中的键是无序的
+
+- Map 的键值对个数可以轻易地通过 size 属性获取
+- object 只能通过手动计算
+
+- Map 是可迭代的，所以使用 for of
+- object 不是可迭代的，所以不能使用 for of
