@@ -30,10 +30,11 @@ export function renderer() {
 
 ```ts
 // 存储每次调用时，给 state 的 value
-let stateArray: any[] = []
 // 记录位置
+
+let stateArray: any[] = []
 let initIndex: number = 0
-const useState = <T>(initState: T): [T, (newState: T) => void] => {
+const useMyState = <T>(initState: T): [T, (newState: T) => void] => {
   const currentIndex = initIndex
   startArray[currentIndex] = stateArray[currentIndex] || initState
   function setState(newState: T) {
