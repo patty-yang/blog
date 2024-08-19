@@ -9,6 +9,7 @@ createRenderer 内部调用的是 `baseCreateRenderer`
 `baseCreateRenderer` 是 patch、update、mount 等方法实现，但最终只是返回`【0.4】`三个方法，其中`createApp`是调用`createAppAPI`方法
 
 ```ts
+// packages/runtime-dom/src/index.ts
 // 0.1
 export const createApp = ((...args) => {
   const app = ensureRenderer().createApp(...args)
@@ -62,6 +63,7 @@ export const createApp = ((...args) => {
 
 ```ts
 // 0.2
+// packages/runtime-dom/src/index.ts
 const rendererOptions = /*#__PURE__*/ extend({ patchProp }, nodeOps)
 
 function ensureRenderer() {
@@ -83,6 +85,7 @@ export function createRenderer<
 ```
 
 ```ts
+// packages/runtime-dom/src/index.ts
 // 0.4
 function baseCreateRenderer(
   options: RendererOptions,
