@@ -627,3 +627,5 @@ export class ReactiveEffect<T = any> {
 ```
 
 ![](1.png)
+
+<Gitalk />
