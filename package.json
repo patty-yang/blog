@@ -26,5 +26,8 @@
         "search-insights"
       ]
     }
+  },
+  "dependencies": {
+    "gitalk": "^1.8.0"
   }
 }

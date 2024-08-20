@@ -15,11 +15,12 @@ export default defineConfig({
     // { text: 'Examples', link: '/' }
     // ],
     sidebar: [
-      ...readDirectory('base')
+      // ...readDirectory('base'),
       // ...readDirectory('basic'),
       // ...readDirectory('books'),
       // ...readDirectory('progress'),
-      // ...readDirectory('other')
+      // ...readDirectory('other'),
+      ...readDirectory('rewrite')
     ],
     socialLinks: [
       // {

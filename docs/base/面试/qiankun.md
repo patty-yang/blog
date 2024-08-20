@@ -102,7 +102,7 @@ output: {
 
 3. react 使用 react-app-rewired 配置 -> config-overrides.js
 
-### 全局状态
+## 全局状态
 
 ```js
 const actions = initGlobalState(state)
