@@ -260,3 +260,5 @@ app.mount = (containerOrSelector: Element | ShadowRoot | string): any => {
 
 return app
 ```
+
+<Gitalk />
