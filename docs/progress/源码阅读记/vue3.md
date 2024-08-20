@@ -266,3 +266,8 @@ class RefImpl<T> {
 ```
 
 ## reactive
+**_第一步_**
+  首先会判断是否是 readonly 的, 如果是 readonly 的就直接返回，要不就是 return createReactiveObject()
+
+// createReactiveObject 
+
