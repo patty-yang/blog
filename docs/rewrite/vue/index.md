@@ -2,11 +2,17 @@
 
 [createApp]()
 
-[mount]()
+[mount]() TODO Rewrite
 
 [render]()
 
 [ref|reactive]()
+
+[computed]()
+
+<!-- [watch]()
+
+[watchEffect]() -->
 
 ### baseHandlers get 中 key 的类型
 
