@@ -21,13 +21,13 @@
     - web-worker 耗时计算
 
       ```js
-      const num = 10000
-      const worker = new Worker('worker.js')
-      worker.postMessage(num)
+      const num = 10000;
+      const worker = new Worker('worker.js');
+      worker.postMessage(num);
 
       worker.onmessage = function (event) {
-        console.log(event.data)
-      }
+        console.log(event.data);
+      };
       ```
 
   - 资源加载

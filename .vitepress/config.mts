@@ -1,5 +1,5 @@
-import { defineConfig } from 'vitepress'
-import { readDirectory } from '../docs'
+import { defineConfig } from 'vitepress';
+import { readDirectory } from '../docs';
 
 export default defineConfig({
   outDir: 'dist',
@@ -20,7 +20,7 @@ export default defineConfig({
       // ...readDirectory('books'),
       // ...readDirectory('progress'),
       // ...readDirectory('other'),
-      ...readDirectory('rewrite')
+      ...readDirectory('rewrite'),
     ],
     socialLinks: [
       // {
@@ -32,11 +32,11 @@ export default defineConfig({
       text: '最后更新时间',
       formatOptions: {
         dateStyle: 'full',
-        timeStyle: 'medium'
-      }
+        timeStyle: 'medium',
+      },
     },
     search: {
-      provider: 'local'
-    }
-  }
-})
+      provider: 'local',
+    },
+  },
+});
