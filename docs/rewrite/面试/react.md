@@ -32,18 +32,18 @@ export function renderer() {
 // 存储每次调用时，给 state 的 value
 // 记录位置
 
-let stateArray: any[] = []
-let initIndex: number = 0
+let stateArray: any[] = [];
+let initIndex: number = 0;
 const useMyState = <T>(initState: T): [T, (newState: T) => void] => {
-  const currentIndex = initIndex
-  startArray[currentIndex] = stateArray[currentIndex] || initState
+  const currentIndex = initIndex;
+  startArray[currentIndex] = stateArray[currentIndex] || initState;
   function setState(newState: T) {
-    startArray[currentIndex] = newState
-    renderer()
+    startArray[currentIndex] = newState;
+    renderer();
   }
-  ++initIndex
-  return [stateArray[currentIndex], stState]
-}
+  ++initIndex;
+  return [stateArray[currentIndex], stState];
+};
 ```
 
 > 所以这就是为什么不能在循环中使用 useState 的原因，当 index 错误的话 state 不就乱了嘛
@@ -59,25 +59,25 @@ const useMyState = <T>(initState: T): [T, (newState: T) => void] => {
 - 上次 render 和 本次 render 的依赖比较，在依赖发生变化时，执行 callback
 
 ```ts
-const allDeps = []
-const currentIndex = 0
+const allDeps = [];
+const currentIndex = 0;
 const useEffect = (callback: () => void, depArray?: any[]) => {
   // 当没有传递依赖项时，每次都触发 callback
   if (!depArray) {
-    callback()
-    allDeps[currentIndex] = depArray
-    currentIndex++
-    return false
+    callback();
+    allDeps[currentIndex] = depArray;
+    currentIndex++;
+    return false;
   }
-  const deps = allDeps[currentIndex]
+  const deps = allDeps[currentIndex];
   // 比较
   const hasChange = deps
     ? depArray.some((it, index) => it !== deps[index])
-    : true
+    : true;
   if (hasChange) {
-    callback()
-    allDeps[currentIndex] = depArray
+    callback();
+    allDeps[currentIndex] = depArray;
   }
-  currentIndex++
-}
+  currentIndex++;
+};
 ```
