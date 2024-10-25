@@ -185,11 +185,14 @@ function _throttle2(fn, delay = 200) {
 }
 ```
 
-## 箭头函数
+## 箭头函数和普通函数
 
-- 函数的 this 对象，是在定义时所在的对象，而不是使用时所在的对象，且无法更改 this 指向，call、apply、bind
-- 不能被 new 也就是当作构造函数
-- 不能使用 arguments
+- 没有自己的 this，只能通过作用域链来向上查找离自己最近的那个函数的 this。
+- 不能作为 constructor，因此不能通过 new 来调用，所以它并没有 new.target 这个属性。
+- 没有 argument 属性，可以通过 ...rest 可以获取。
+- 不能直接使用 call 和 apply，bind 来改变 this。
+- 不能使用 yield，不能作为 generator 函数。
+- 语法比普通函数更加简洁。
 
 ## call apply bind
 
@@ -335,3 +338,23 @@ Function.prototype.myBind = function (context) {
 ## 闭包
 
 - 函数执行时，使用了外部的数据，通过作用域链，就创建了闭包
+
+
+
+## 事件循环
+- js是一门单线程语言，也就是在同一时间内执行一件任务，如果任务是异步操作，那么在执行时，js引擎会将异步任务放入事件队列中，等待主线程空闲时，再从事件队列中取出来执行。
+- 事件循环机制就是：主线程不断检查事件队列中是否有任务，如果有，则取出并执行。
+  - 同步任务： 任务立即执行，通常会进入主执行栈进行处理
+  - 异步任务： 不会立即执行，而是放在事件队列中，待主线程空闲时再执行。
+- 异步任务可以进一步划分为宏任务和微任务：
+  - 微任务：Promise、Object.observe、MutationObserver，Nodejs中的process.nextTick、
+  - 宏任务：setTimeout、setInterval、UI渲染、postMessage、MessageChannel、rendering，Nodejs中的setImmediate
+- 在一个宏任务执行完成后，会查看是否存在微任务队列，如果有的话，则会一次执行这些微任务，然后再执行下一个宏任务。
+
+## async与await的理解
+- async 标记的函数总是会返回一个 promise，如果函数并不是一个 promise 的值，那这个值会被包装在一个 resolved 状态的 promise中
+- await 可以暂停 async 函数的执行，等待 promise 处理完成， 如果不是一个 promise 的值，它会被转为一个立即 resolve 的 promise
+- await 命令后面的代码会被暂停执行，知道前面的 promise 状态变为 fulfilled｜ rejected，从而实现异步到同步的一个转换
+##### 执行流程
+- 1. 解析同步代码，将微任务和宏任务分别加入对应队列中
+- 2. 当 当前的宏任务执行完成后，检查微任务队列是否为空，如果为空则执行下一个宏任务；如果微任务队列不为空，则执行微任务队列中的所有任务，直到微任务队列为空。
