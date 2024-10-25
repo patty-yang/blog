@@ -71,7 +71,7 @@
 
 ```javascript
 //  自定义loader 将代码中的console替换
-module.exports = function () {
+module.exports = function (source) {
   source.replace(/console\.log\(.*)/g, 'content')
   return source
 }
