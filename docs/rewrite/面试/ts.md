@@ -128,3 +128,5 @@ type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
 - Compute<A & B> 是将交叉类型合并
 - Intersection<T, U>的作用是取 T 的属性,此属性同样也存在与 U。
 - Overwrite<T, U> 是用 U 的属性覆盖 T 的相同属性。
+
+<Gitalk />
