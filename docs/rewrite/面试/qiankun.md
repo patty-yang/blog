@@ -152,3 +152,6 @@ actions.onGlobalStateChange((value, prev) => {
 - react 使用 css module
 - vue 使用 scoped
   vue、react 项目已经做样式隔离了，没必要使用 qiankun 的样式隔离
+
+
+<Gitalk />
