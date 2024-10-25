@@ -81,3 +81,5 @@ const useEffect = (callback: () => void, depArray?: any[]) => {
   currentIndex++;
 };
 ```
+
+<Gitalk />
