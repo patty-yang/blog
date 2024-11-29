@@ -1,3 +1,4 @@
+
 import { defineConfig } from 'vitepress';
 import { readDirectory } from '../docs';
 
@@ -20,7 +21,8 @@ export default defineConfig({
       // ...readDirectory('books'),
       // ...readDirectory('progress'),
       // ...readDirectory('other'),
-      ...readDirectory('rewrite'),
+      // ...readDirectory('rewrite'),
+      ...readDirectory('difficult'),
     ],
     socialLinks: [
       // {
