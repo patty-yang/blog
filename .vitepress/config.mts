@@ -1,4 +1,3 @@
-
 import { defineConfig } from 'vitepress';
 import { readDirectory } from '../docs';
 
@@ -16,13 +15,11 @@ export default defineConfig({
     // { text: 'Examples', link: '/' }
     // ],
     sidebar: [
-      // ...readDirectory('base'),
       // ...readDirectory('basic'),
       // ...readDirectory('books'),
       // ...readDirectory('progress'),
       // ...readDirectory('other'),
-      // ...readDirectory('rewrite'),
-      ...readDirectory('difficult'),
+      ...readDirectory('rewrite'),
     ],
     socialLinks: [
       // {
