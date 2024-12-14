@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress';
-import { readDirectory } from '../docs';
+import { readDirectory } from '..';
 
 export default defineConfig({
   outDir: 'dist',
@@ -10,18 +10,27 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     // logo: '/logo.png',
-    // nav: [
-    // { text: 'Home', link: '/' },
-    // { text: 'Examples', link: '/' }
-    // ],
-    sidebar: [
-      // ...readDirectory('basic'),
-      // ...readDirectory('books'),
-      // ...readDirectory('progress'),
-      // ...readDirectory('other'),
-      // ...readDirectory('rewrite'),
-      ...readDirectory('project'),
+    nav: [
+      { text: '首页', link: '/' },
+      {
+        text: '前端积累',
+        items: [
+          { text: 'vue', link: '/vue/index' },
+          { text: '每天学点ts', link: '/typescript/ts' },
+          { text: '重学js', link: '/javascript/js' },
+          { text: '读万卷书 行万里路', link: '/react/index' },
+        ]
+      },
+      {
+        text: '源码阅读',
+        items: []
+      }
     ],
+    sidebar: {
+      ...readDirectory('project'),
+      ...readDirectory('books'),
+      ...readDirectory('vue'),
+    },
     socialLinks: [
       // {
       //   icon: 'github',
@@ -37,6 +46,6 @@ export default defineConfig({
     },
     search: {
       provider: 'local',
-    },
-  },
-});
+    }
+  }
+})
