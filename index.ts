@@ -1,3 +1,4 @@
+
 import fs from 'fs'
 import path from 'path'
 const md = /\.md$/
@@ -25,8 +26,8 @@ export const readDirectory = (name: string): DirectoryStructure => {
     [`/${name}/`]: [
       {
         text: name,
-        items: items.map((item) => ({
-          text: isMdFile(item) ? item.replace(md, '') : '',
+        items: items.map((item, index) => ({
+          text: isMdFile(item) ? `${index + 1}. ${item.replace(md, '')}` : '',
           link: `/${path.join(name, item)}`
         }))
       }
