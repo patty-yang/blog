@@ -1,6 +1,12 @@
 ## 顺序
 
-[createApp]()
+[模版](模版)
+
+[虚拟 DOM](虚拟DOM)
+
+[响应式数据](响应式数据)
+
+<!-- [createApp]()
 
 [mount]() TODO Rewrite
 
@@ -10,9 +16,6 @@
 
 [computed]()
 
-<!-- [watch]()
-
-[watchEffect]() -->
 
 ### baseHandlers get 中 key 的类型
 
@@ -24,6 +27,6 @@ export enum ReactiveFlags {
   IS_SHALLOW = '__v_isShallow',
   RAW = '__v_raw'
 }
-```
+``` -->
 
 <Gitalk />
