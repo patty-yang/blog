@@ -22,6 +22,10 @@ export default defineConfig({
         ]
       },
       {
+        text: '手写代码',
+        items: []
+      },
+      {
         text: '源码阅读',
         items: []
       }
