@@ -8,6 +8,8 @@
 
 [组件渲染](组件渲染)
 
+[关于 pinia](关于pinia)
+
 <!-- [createApp]()
 
 [mount]() TODO Rewrite
