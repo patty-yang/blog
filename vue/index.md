@@ -6,6 +6,8 @@
 
 [响应式数据](响应式数据)
 
+[组件渲染](组件渲染)
+
 <!-- [createApp]()
 
 [mount]() TODO Rewrite
