@@ -23,17 +23,29 @@ export default defineConfig({
       },
       {
         text: '手写代码',
-        items: []
+        items: [
+          {
+            text: 'vue',
+            link: '/white-code/vue/index'
+          },
+        ]
       },
       {
         text: '源码阅读',
-        items: []
+        items: [
+          // {
+          //   text: 'vue3',
+          //   link: '/源码阅读记/vue3'
+          // }
+        ]
       }
     ],
     sidebar: {
       ...readDirectory('project'),
       ...readDirectory('books'),
       ...readDirectory('vue'),
+      ...readDirectory('white-code/vue'),
+      // ...readDirectory('源码阅读记')
     },
     socialLinks: [
       // {
