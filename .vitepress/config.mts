@@ -16,7 +16,7 @@ export default defineConfig({
         text: '前端积累',
         items: [
           { text: 'vue', link: '/vue/index' },
-          { text: '每天学点ts', link: '/typescript/ts' },
+          { text: '重学typescript', link: '/typescript/index' },
           { text: '重学js', link: '/javascript/js' },
           { text: '读万卷书 行万里路', link: '/react/index' },
         ]
@@ -45,6 +45,7 @@ export default defineConfig({
       ...readDirectory('books'),
       ...readDirectory('vue'),
       ...readDirectory('white-code/vue'),
+      ...readDirectory('typescript'),
       // ...readDirectory('源码阅读记')
     },
     socialLinks: [
