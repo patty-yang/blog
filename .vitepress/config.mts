@@ -2,6 +2,7 @@ import { defineConfig } from "vitepress"
 import { readDirectory } from ".."
 
 export default defineConfig({
+  ignoreDeadLinks: true,
   outDir: "dist",
   lang: "zh-CN",
   title: "小杨的进阶之路",
