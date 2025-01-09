@@ -2,6 +2,7 @@ import { defineConfig } from "vitepress"
 import { readDirectory } from ".."
 
 export default defineConfig({
+  // https://vitepress.dev/reference/site-config#ignoredeadlinks
   ignoreDeadLinks: true,
   outDir: "dist",
   lang: "zh-CN",
