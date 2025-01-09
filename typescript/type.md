@@ -67,6 +67,49 @@ str2 = str
 str = str2 // Type 'String' is not assignable to type 'string'. 'string' is a primitive, but 'String' is a wrapper object. Prefer using 'string' when possible.(2322)
 ```
 
+## satisfies --- TS 4.9
+
+和 as 比较类似，但是比 as 更安全更智能，因为它能在满足类型安全的前提下，自动的帮我们做类型收窄、智能提示
+
+```ts
+interface IConfig {
+  a: string | number
+}
+
+const config: IConfig = {}
+config.a // 虽然有ts的提示，但是在使用 config 的时候还是可以提示出来 a
+
+const config2 = {} as IConfig
+config.a // 虽然有ts的提示，但是在使用 config 的时候还是可以提示出来 a
+
+// 如果类型不安全的话，通过 satisfies 会报错
+const config3 = {} satisfies IConfig
+// 在使用的时候也会报错
+config3.a
+
+// 智能提示
+type Test {
+  a: string
+  b: number
+  [key: string]: any
+}
+
+const test: Test = {
+  a: '1',
+  b: 2,
+  c: '3'
+}
+
+// test.  提示 a、b
+
+const test = {
+  a: '1',
+  b: 2,
+  c: '3'
+}  satisfies Test
+// test.  提示 a、b、c
+```
+
 ## 装箱类型、拆箱类型、字面量类型
 
 ```txt
@@ -102,3 +145,13 @@ ts 的对象类型表示`对象的结构`，js 采用的是结构化类型，ts 
 结构化类型: 是根据结构来确定的，如果两个对象的结构相同（有相同的属性和方法），那么就可以认为是相同的类型或者是兼容的类型
 
 名义化类型: 是根据类型的名称和标识符来判断类型是否相同
+
+## 协变
+
+子类型可以赋值给父类型
+
+## 逆变
+
+父类型可以赋值给子类型
+
+## 双向协变
