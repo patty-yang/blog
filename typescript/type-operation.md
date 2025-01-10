@@ -146,3 +146,12 @@ type Merge<T, U> = {
 
 type Test = Merge<A, B>
 ```
+
+## 分发式条件特性
+
+得需要联合类型 + 泛型触发
+
+```ts
+string extends T ? A : B  // -> string extends T ? A : B
+(number | string)  T ? A : B // -> number extends T ? A : B | string extends T ? A : B
+```
