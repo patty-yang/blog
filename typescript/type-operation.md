@@ -155,3 +155,9 @@ type Test = Merge<A, B>
 string extends T ? A : B  // -> string extends T ? A : B
 (number | string)  T ? A : B // -> number extends T ? A : B | string extends T ? A : B
 ```
+
+## Extract
+
+```ts
+type MyExtract<T, U> = T extends U ? T : never
+```
