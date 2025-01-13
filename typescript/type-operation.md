@@ -78,9 +78,48 @@ type MyRecord<T extends keyof any, U> = {
 类型提取
 
 ```ts
-type Pick<T, K extends keyof T> = {
+type MyPick<T, K extends keyof T> = {
   [p in K]: T[p]
 }
+```
+
+## Extract
+
+```ts
+type MyExtract<T, U> = T extends U ? T : never
+```
+
+## Omit
+
+类型剔除
+
+```ts
+interface Todo {
+  title: string
+  desc: string
+  completed: boolean
+}
+type MyOmit<T, K extends keyof any> = MyPick<T, Exclude<keyof T, K>>
+
+type T1 = MyOmit<Todo, "title" | "desc">
+type T2 = MyPick<Todo, "title" | "desc">
+```
+
+##
+
+```ts
+// 选取类型上的某些属性为 可选
+type User = {
+  name: string
+  age: number
+  id: string
+  address: string
+  desc: string
+}
+
+type OptionalPick<T, U extends keyof T> = {}
+
+type PickUser = OptionalPick<User, "address" | "desc">
 ```
 
 ## 条件类型
@@ -134,6 +173,7 @@ type B = {
   age: number
   id: number
 }
+
 type Merge<T, U> = {
   // 便利所有的 key 联合类型会自动去重
   [P in keyof T | keyof U]: P extends keyof T
@@ -147,17 +187,11 @@ type Merge<T, U> = {
 type Test = Merge<A, B>
 ```
 
-## 分发式条件特性
+<!-- ## 分发式条件特性
 
 得需要联合类型 + 泛型触发
 
 ```ts
 string extends T ? A : B  // -> string extends T ? A : B
 (number | string)  T ? A : B // -> number extends T ? A : B | string extends T ? A : B
-```
-
-## Extract
-
-```ts
-type MyExtract<T, U> = T extends U ? T : never
-```
+``` -->
