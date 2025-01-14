@@ -210,6 +210,9 @@ type First<T extends any[]> = T extends [] ? never : T[0]
 // 如果传递的数组长度是 0 的话 返回 never
 type First<T extends any[]> = T["length"] extends 0 ? never : T[0]
 
+// infer
+type First<T extends any[]> = T extends (infer R, ...infer O)[] ? R : never
+
 /* _____________ 测试用例 _____________ */
 import type { Equal, Expect } from "@type-challenges/utils"
 
@@ -311,5 +314,184 @@ type cases = [
   Expect<
     Equal<MyExclude<string | number | (() => void), Function>, string | number>
   >
+]
+```
+
+## 189 - Awaited
+
+假如我们有一个 Promise 对象，这个 Promise 对象会返回一个类型。在 TS 中，我们用 Promise<T> 中的 T 来描述这个 Promise 返回的类型。请你实现一个类型，可以获取这个类型。
+
+例如：`Promise<ExampleType>`，请你返回 ExampleType 类型。
+
+```ts
+type ExampleType = Promise<string>
+
+type Result = MyAwaited<ExampleType> // string
+```
+
+```ts
+// promiseLike promise的then/catch/finally
+// 在ES6 之前没有标准的 promise 内置对象，但是社区已经有  future/Promise 异步的相关实践，
+// 按照PromiseA+规范来描述Promise
+
+// 是否是个Promise对象
+// 通过 infer 获取对应的类型
+// 如果是个 promise 递归 否则返回对应的类型
+type MyAwaited<T extends PromiseLike<any>> = T extends PromiseLike<infer V>
+  ? V extends PromiseLike<any>
+    ? MyAwaited<V>
+    : V
+  : never
+
+/* _____________ 测试用例 _____________ */
+import type { Equal, Expect } from "@type-challenges/utils"
+
+type X = Promise<string>
+type Y = Promise<{ field: number }>
+type Z = Promise<Promise<string | number>>
+type Z1 = Promise<Promise<Promise<string | boolean>>>
+type T = { then: (onfulfilled: (arg: number) => any) => any }
+
+type cases = [
+  Expect<Equal<MyAwaited<X>, string>>,
+  Expect<Equal<MyAwaited<Y>, { field: number }>>,
+  Expect<Equal<MyAwaited<Z>, string | number>>,
+  Expect<Equal<MyAwaited<Z1>, string | boolean>>,
+  Expect<Equal<MyAwaited<T>, number>>
+]
+```
+
+## 268 - If
+
+实现一个 `IF` 类型，它接收一个条件类型 `C` ，一个判断为真时的返回类型 `T` ，以及一个判断为假时的返回类型 `F`。 `C` 只能是 `true` 或者 `false`， `T` 和 `F` 可以是任意类型。
+
+例如：
+
+```ts
+type A = If<true, "a", "b"> // expected to be 'a'
+type B = If<false, "a", "b"> // expected to be 'b'
+```
+
+```ts
+// C 为真时，返回 T, C 为假时，返回 F,说明 C 是 boolean
+type If<C extends boolean, T, F> = C extends true ? T : F
+/* _____________ 测试用例 _____________ */
+import type { Equal, Expect } from "@type-challenges/utils"
+
+type cases = [
+  Expect<Equal<If<true, "a", "b">, "a">>,
+  Expect<Equal<If<false, "a", 2>, 2>>,
+  Expect<Equal<If<boolean, "a", 2>, "a" | 2>>
+]
+
+// @ts-expect-error
+type error = If<null, "a", "b">
+```
+
+## 533 - Concat
+
+在类型系统里实现 JavaScript 内置的 `Array.concat` 方法，这个类型接受两个参数，返回的新数组类型应该按照输入参数从左到右的顺序合并为一个新的数组。
+
+例如：
+
+```ts
+type Result = Concat<[1], [2]> // expected to be [1, 2]
+```
+
+```ts
+type Concat<T extends readonly any[], U extends readonly any[]> = [...T, ...U]
+
+/* _____________ 测试用例 _____________ */
+import type { Equal, Expect } from "@type-challenges/utils"
+
+const tuple = [1] as const
+
+// const T1 = typeof tuple
+/*
+const T1: "string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function"
+所以需要加 readonly
+ */
+
+type cases = [
+  Expect<Equal<Concat<[], []>, []>>,
+  Expect<Equal<Concat<[], [1]>, [1]>>,
+  Expect<Equal<Concat<typeof tuple, typeof tuple>, [1, 1]>>,
+  Expect<Equal<Concat<[1, 2], [3, 4]>, [1, 2, 3, 4]>>,
+  Expect<
+    Equal<
+      Concat<["1", 2, "3"], [false, boolean, "4"]>,
+      ["1", 2, "3", false, boolean, "4"]
+    >
+  >
+]
+
+// @ts-expect-error
+type error = Concat<null, undefined>
+```
+
+## 898 - Includes
+
+在类型系统里实现 JavaScript 的 `Array.includes` 方法，这个类型接受两个参数，返回的类型要么是 `true` 要么是 `false`。
+
+例如：
+
+```ts
+type isPillarMen = Includes<["Kars", "Esidisi", "Wamuu", "Santana"], "Dio"> // expected to be `false`
+```
+
+```ts
+/* _____________ 你的代码 _____________ */
+
+type Includes<T extends readonly any[], U> = T extends U ? true : false
+
+/* _____________ 测试用例 _____________ */
+import type { Equal, Expect } from "@type-challenges/utils"
+
+type cases = [
+  Expect<
+    Equal<Includes<["Kars", "Esidisi", "Wamuu", "Santana"], "Kars">, true>
+  >,
+  Expect<
+    Equal<Includes<["Kars", "Esidisi", "Wamuu", "Santana"], "Dio">, false>
+  >,
+  Expect<Equal<Includes<[1, 2, 3, 5, 6, 7], 7>, true>>,
+  Expect<Equal<Includes<[1, 2, 3, 5, 6, 7], 4>, false>>,
+  Expect<Equal<Includes<[1, 2, 3], 2>, true>>,
+  Expect<Equal<Includes<[1, 2, 3], 1>, true>>,
+  Expect<Equal<Includes<[{}], { a: "A" }>, false>>,
+  Expect<Equal<Includes<[boolean, 2, 3, 5, 6, 7], false>, false>>,
+  Expect<Equal<Includes<[true, 2, 3, 5, 6, 7], boolean>, false>>,
+  Expect<Equal<Includes<[false, 2, 3, 5, 6, 7], false>, true>>,
+  Expect<Equal<Includes<[{ a: "A" }], { readonly a: "A" }>, false>>,
+  Expect<Equal<Includes<[{ readonly a: "A" }], { a: "A" }>, false>>,
+  Expect<Equal<Includes<[1], 1 | 2>, false>>,
+  Expect<Equal<Includes<[1 | 2], 1>, false>>,
+  Expect<Equal<Includes<[null], undefined>, false>>,
+  Expect<Equal<Includes<[undefined], null>, false>>
+]
+```
+
+## push
+
+在类型系统里实现通用的 `Array.push` 。
+
+例如：
+
+```typescript
+type Result = Push<[1, 2], "3"> // [1, 2, '3']
+```
+
+```ts
+/* _____________ 你的代码 _____________ */
+
+type Push<T extends any[], U> = [...T, U]
+
+/* _____________ 测试用例 _____________ */
+import type { Equal, Expect } from "@type-challenges/utils"
+
+type cases = [
+  Expect<Equal<Push<[], 1>, [1]>>,
+  Expect<Equal<Push<[1, 2], "3">, [1, 2, "3"]>>,
+  Expect<Equal<Push<["1", 2, "3"], boolean>, ["1", 2, "3", boolean]>>
 ]
 ```
