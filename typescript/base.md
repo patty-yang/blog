@@ -363,3 +363,14 @@ interface B {
   name: string
 }
 ```
+
+## ``
+
+```ts
+type Hello = "hello"
+type Greet = `${Hello} world`
+
+type Direction = "left" | "right" | "top" | "bottom"
+type StyleName = "padding" | "margin" | "border"
+type Model = `${StyleName}-${Direction}` // type Model = "padding-left" | "padding-right" | "padding-top" | "padding-bottom" | "margin-left" | "margin-right" | "margin-top" | "margin-bottom" | "border-left" | "border-right" | "border-top" | "border-bottom"
+```
