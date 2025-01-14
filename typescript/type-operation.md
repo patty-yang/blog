@@ -103,6 +103,21 @@ type MyOmit<T, K extends keyof any> = MyPick<T, Exclude<keyof T, K>>
 
 type T1 = MyOmit<Todo, "title" | "desc">
 type T2 = MyPick<Todo, "title" | "desc">
+
+// 健名映射 as
+type MyOmit<T, K extends keyof any> = {
+  [p in keyof T as p extends K ? never : p]: T[p]
+}
+
+type TodoOmit<Todo, 'title'|'decs'> // completed
+
+/**
+ p in keyof T -> "title" | "desc" | 'completed'
+
+  "title" extends 'title'|'decs' ? never : "title"
+  "desc" extends 'title'|'decs' ? never : "desc"
+  "completed" extends 'title'|'decs' ? never : "completed"
+ */
 ```
 
 ##
@@ -117,7 +132,7 @@ type User = {
   desc: string
 }
 
-type OptionalPick<T, U extends keyof T> = {}
+type OptionalPick<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
 
 type PickUser = OptionalPick<User, "address" | "desc">
 ```
@@ -195,3 +210,43 @@ type Test = Merge<A, B>
 string extends T ? A : B  // -> string extends T ? A : B
 (number | string)  T ? A : B // -> number extends T ? A : B | string extends T ? A : B
 ``` -->
+
+## infer
+
+在`条件类型`中的类型进行类型推断
+
+基本语法是 `A extends B ? C : D`
+
+A 和 B 是类型 C D 是返回的类型
+
+```ts
+// 从数组类型中推断其元素的类型
+type ElementType<T> = T extends (infer R)[] ? R : never
+type E1 = ElementType<number[]> // number
+```
+
+```ts
+// 推断函数的返回值类型
+type ParametersType<T> = T extends (arg: infer R) => any ? R : never
+type Func = (v: number) => void
+type E2 = ParametersType<Func>
+```
+
+```ts
+// 第一个和最后一个的类型
+type First<T> = T extends [infer R, ...infer O] ? R : never
+type Last<T> = T extends [...infer R, infer L] ? L : never
+
+type arr1 = ["1", "2", "3"]
+type arr2 = [1, 2, 3]
+
+type F1 = First<arr1>
+type F2 = Last<arr2>
+```
+
+```ts
+// 元祖两个位置上的类型交换
+type Swap<T extends any[]> = T extends [infer A, ...infer O, infer B]
+  ? [B, A]
+  : T
+```
