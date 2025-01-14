@@ -374,3 +374,13 @@ type Direction = "left" | "right" | "top" | "bottom"
 type StyleName = "padding" | "margin" | "border"
 type Model = `${StyleName}-${Direction}` // type Model = "padding-left" | "padding-right" | "padding-top" | "padding-bottom" | "margin-left" | "margin-right" | "margin-top" | "margin-bottom" | "border-left" | "border-right" | "border-top" | "border-bottom"
 ```
+
+## 循环类型
+
+```ts
+type StringToUnion<T extends string> = T extends `${infer First}${infer Rest}`
+  ? First | String<Rest>
+  : never
+type MyString = "abc"
+type MyUnion = StringToUnion<MyString> // 结果是 "a" | "b" | "c"
+```
