@@ -471,7 +471,7 @@ type cases = [
 ]
 ```
 
-## push
+## 3057 - Push
 
 在类型系统里实现通用的 `Array.push` 。
 
@@ -493,5 +493,65 @@ type cases = [
   Expect<Equal<Push<[], 1>, [1]>>,
   Expect<Equal<Push<[1, 2], "3">, [1, 2, "3"]>>,
   Expect<Equal<Push<["1", 2, "3"], boolean>, ["1", 2, "3", boolean]>>
+]
+```
+
+### 题目
+
+实现类型版本的 `Array.unshift`。
+
+例如：
+
+```typescript
+type Result = Unshift<[1, 2], 0> // [0, 1, 2]
+```
+
+```ts
+/* _____________ 你的代码 _____________ */
+
+type Unshift<T extends any[], U> = [U, ...T]
+
+/* _____________ 测试用例 _____________ */
+import type { Equal, Expect } from "@type-challenges/utils"
+
+type cases = [
+  Expect<Equal<Unshift<[], 1>, [1]>>,
+  Expect<Equal<Unshift<[1, 2], 0>, [0, 1, 2]>>,
+  Expect<Equal<Unshift<["1", 2, "3"], boolean>, [boolean, "1", 2, "3"]>>
+]
+```
+
+## 3312 - Parameters
+
+实现内置的 Parameters<T> 类型，而不是直接使用它，可参考[TypeScript 官方文档](https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype)。
+
+例如：
+
+```ts
+const foo = (arg1: string, arg2: number): void => {}
+
+type FunctionParamsType = MyParameters<typeof foo> // [arg1: string, arg2: number]
+```
+
+```ts
+/* _____________ 你的代码 _____________ */
+
+type MyParameters<T extends (...args: any[]) => any> = T extends (
+  ...args: infer R
+) => unknown
+  ? R
+  : never
+
+/* _____________ 测试用例 _____________ */
+import type { Equal, Expect } from "@type-challenges/utils"
+
+function foo(arg1: string, arg2: number): void {}
+function bar(arg1: boolean, arg2: { a: "A" }): void {}
+function baz(): void {}
+
+type cases = [
+  Expect<Equal<MyParameters<typeof foo>, [string, number]>>,
+  Expect<Equal<MyParameters<typeof bar>, [boolean, { a: "A" }]>>,
+  Expect<Equal<MyParameters<typeof baz>, []>>
 ]
 ```
