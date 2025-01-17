@@ -33,6 +33,15 @@ export default defineConfig({
         ]
       },
       {
+        text: "项目",
+        items: [
+          {
+            text: "项目难点",
+            link: "/project/webpack"
+          }
+        ]
+      },
+      {
         text: "源码阅读",
         items: [
           // {
