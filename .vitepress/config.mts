@@ -1,48 +1,48 @@
-import { defineConfig } from "vitepress"
-import { readDirectory } from ".."
+import { defineConfig } from 'vitepress'
+import { readDirectory } from '..'
 
 export default defineConfig({
   // https://vitepress.dev/reference/site-config#ignoredeadlinks
   ignoreDeadLinks: true,
-  outDir: "dist",
-  lang: "zh-CN",
-  title: "小杨的进阶之路",
-  description: " ",
+  outDir: 'dist',
+  lang: 'zh-CN',
+  title: '小杨的进阶之路',
+  description: ' ',
   lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     // logo: '/logo.png',
     nav: [
-      { text: "首页", link: "/" },
+      { text: '首页', link: '/' },
       {
-        text: "前端积累",
+        text: '前端积累',
         items: [
-          { text: "vue", link: "/vue/index" },
-          { text: "重学typescript", link: "/typescript/index" },
-          { text: "重学js", link: "/javascript/js" }
+          { text: 'vue', link: '/vue/index' },
+          { text: '重学typescript', link: '/typescript/index' },
+          { text: '重学js', link: '/javascript/js' }
           // { text: '读万卷书 行万里路', link: '/react/index' },
         ]
       },
       {
-        text: "手写代码",
+        text: '手写代码',
         items: [
           {
-            text: "vue",
-            link: "/white-code/vue/index"
+            text: 'vue',
+            link: '/white-code/vue/index'
           }
         ]
       },
       {
-        text: "项目",
+        text: '项目',
         items: [
           {
-            text: "项目难点",
-            link: "/project/webpack"
+            text: '项目难点',
+            link: '/project/webpack'
           }
         ]
       },
       {
-        text: "源码阅读",
+        text: '源码阅读',
         items: [
           // {
           //   text: 'vue3',
@@ -52,11 +52,11 @@ export default defineConfig({
       }
     ],
     sidebar: {
-      ...readDirectory("project"),
-      ...readDirectory("books"),
-      ...readDirectory("vue"),
-      ...readDirectory("white-code/vue"),
-      ...readDirectory("typescript")
+      ...readDirectory('project'),
+      ...readDirectory('books'),
+      ...readDirectory('vue'),
+      ...readDirectory('white-code/vue'),
+      ...readDirectory('typescript')
       // ...readDirectory('源码阅读记')
     },
     socialLinks: [
@@ -66,14 +66,14 @@ export default defineConfig({
       // }
     ],
     lastUpdated: {
-      text: "最后更新时间",
+      text: '最后更新时间',
       formatOptions: {
-        dateStyle: "full",
-        timeStyle: "medium"
+        dateStyle: 'full',
+        timeStyle: 'medium'
       }
     },
     search: {
-      provider: "local"
+      provider: 'local'
     }
   }
 })
