@@ -40,16 +40,16 @@ export default defineConfig({
             link: '/project/webpack'
           }
         ]
-      },
-      {
-        text: '源码阅读',
-        items: [
-          // {
-          //   text: 'vue3',
-          //   link: '/源码阅读记/vue3'
-          // }
-        ]
       }
+      // {
+      //   text: '源码阅读',
+      //   items: [
+      //     {
+      //       text: 'vue3',
+      //       link: '/源码阅读记/vue3'
+      //     }
+      //   ]
+      // }
     ],
     sidebar: {
       ...readDirectory('project'),
