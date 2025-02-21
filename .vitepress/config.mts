@@ -37,7 +37,7 @@ export default defineConfig({
         items: [
           {
             text: '项目难点',
-            link: '/project/webpack'
+            link: '/record/project/webpack'
           }
         ]
       }

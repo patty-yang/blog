@@ -38,19 +38,24 @@ export const readDirectory = (
   folderName: string = 'record'
 ): DirectoryStructure => {
   // 读取目录下的所有文件
-  const items = fs.readdirSync(path.resolve(__dirname, `${folderName}/${name}`))
 
+  const directoryPath = path.resolve(__dirname, `${folderName}/${name}`)
+
+  const items = fs.readdirSync(directoryPath)
+
+  const formatItems = items.map((item, index) => {
+    const isMarkdown = isMdFile(item)
+    return {
+      text: isMarkdown ? `${index + 1}. ${item.replace(md, '')}` : '',
+      link: `/${path.join(folderName, name, item)}`
+    }
+  })
   // 返回格式化后的目录结构
   return {
     [`/${folderName}/${name}/`]: [
       {
         text: name,
-        items: items.map((item, index) => ({
-          // 如果是md文件，则添加序号并移除.md后缀；否则返回空字符串
-          text: isMdFile(item) ? `${index + 1}. ${item.replace(md, '')}` : '',
-          // 生成文件的链接路径
-          link: `/${path.join(folderName, name, item)}`
-        }))
+        items: formatItems
       }
     ]
   }
