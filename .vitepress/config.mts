@@ -17,9 +17,9 @@ export default defineConfig({
       {
         text: '前端积累',
         items: [
-          { text: 'vue', link: '/vue/index' },
-          { text: '重学typescript', link: '/typescript/index' },
-          { text: '重学js', link: '/javascript/js' }
+          { text: 'vue', link: '/record/vue/' },
+          { text: '重学typescript', link: '/record/typescript/index' },
+          { text: '重学js', link: '/record/javascript/js' }
           // { text: '读万卷书 行万里路', link: '/react/index' },
         ]
       },
@@ -28,7 +28,7 @@ export default defineConfig({
         items: [
           {
             text: 'vue',
-            link: '/white-code/vue/index'
+            link: '/record/white-code/vue/'
           }
         ]
       },
@@ -53,11 +53,10 @@ export default defineConfig({
     ],
     sidebar: {
       ...readDirectory('project'),
-      ...readDirectory('books'),
+      // ...readDirectory('books'),
       ...readDirectory('vue'),
       ...readDirectory('white-code/vue'),
       ...readDirectory('typescript')
-      // ...readDirectory('源码阅读记')
     },
     socialLinks: [
       // {
