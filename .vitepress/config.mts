@@ -18,8 +18,8 @@ export default defineConfig({
         text: '前端积累',
         items: [
           { text: 'vue', link: '/record/vue/' },
-          { text: '重学typescript', link: '/record/typescript/index' },
-          { text: '重学js', link: '/record/javascript/js' }
+          { text: '重学typescript', link: '/record/typescript/' },
+          { text: '重学js', link: '/record/js/' }
           // { text: '读万卷书 行万里路', link: '/react/index' },
         ]
       },
@@ -53,7 +53,7 @@ export default defineConfig({
     ],
     sidebar: {
       ...readDirectory('project'),
-      // ...readDirectory('books'),
+      ...readDirectory('js'),
       ...readDirectory('vue'),
       ...readDirectory('white-code/vue'),
       ...readDirectory('typescript')
