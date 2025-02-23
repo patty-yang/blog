@@ -1,4 +1,4 @@
-<!-- ## JavaScript 学习路线 -->
+## JavaScript 重学路线
 
 <div class="learning-path">
 
