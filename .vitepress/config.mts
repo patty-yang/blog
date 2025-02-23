@@ -19,7 +19,7 @@ export default defineConfig({
         items: [
           { text: 'vue', link: '/record/vue/' },
           { text: '重学typescript', link: '/record/typescript/' },
-          { text: '重学js', link: '/record/js/' }
+          { text: '基础巩固', link: '/record/base/' }
           // { text: '读万卷书 行万里路', link: '/react/index' },
         ]
       },
@@ -57,7 +57,7 @@ export default defineConfig({
     ],
     sidebar: {
       ...readDirectory('project'),
-      ...readDirectory('js'),
+      ...readDirectory('base'),
       ...readDirectory('vue'),
       ...readDirectory('js', 'record/white-code'),
       ...readDirectory('vue', 'record/white-code'),
