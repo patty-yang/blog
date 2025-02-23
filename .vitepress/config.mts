@@ -27,6 +27,10 @@ export default defineConfig({
         text: '手写代码',
         items: [
           {
+            text: 'js',
+            link: '/record/white-code/js/'
+          },
+          {
             text: 'vue',
             link: '/record/white-code/vue/'
           }
@@ -55,7 +59,8 @@ export default defineConfig({
       ...readDirectory('project'),
       ...readDirectory('js'),
       ...readDirectory('vue'),
-      ...readDirectory('white-code/vue'),
+      ...readDirectory('js', 'record/white-code'),
+      ...readDirectory('vue', 'record/white-code'),
       ...readDirectory('typescript')
     },
     socialLinks: [
