@@ -17,9 +17,9 @@ export default defineConfig({
       {
         text: '前端积累',
         items: [
-          { text: 'vue', link: '/vue/index' },
-          { text: '重学typescript', link: '/typescript/index' },
-          { text: '重学js', link: '/javascript/js' }
+          { text: 'vue', link: '/record/vue/' },
+          { text: '重学typescript', link: '/record/typescript/' },
+          { text: '基础巩固', link: '/record/base/' }
           // { text: '读万卷书 行万里路', link: '/react/index' },
         ]
       },
@@ -27,8 +27,12 @@ export default defineConfig({
         text: '手写代码',
         items: [
           {
+            text: 'js',
+            link: '/record/white-code/js/'
+          },
+          {
             text: 'vue',
-            link: '/white-code/vue/index'
+            link: '/record/white-code/vue/'
           }
         ]
       },
@@ -37,27 +41,27 @@ export default defineConfig({
         items: [
           {
             text: '项目难点',
-            link: '/project/webpack'
+            link: '/record/project/webpack'
           }
         ]
-      },
-      {
-        text: '源码阅读',
-        items: [
-          // {
-          //   text: 'vue3',
-          //   link: '/源码阅读记/vue3'
-          // }
-        ]
       }
+      // {
+      //   text: '源码阅读',
+      //   items: [
+      //     {
+      //       text: 'vue3',
+      //       link: '/源码阅读记/vue3'
+      //     }
+      //   ]
+      // }
     ],
     sidebar: {
       ...readDirectory('project'),
-      ...readDirectory('books'),
+      ...readDirectory('base'),
       ...readDirectory('vue'),
-      ...readDirectory('white-code/vue'),
+      ...readDirectory('js', 'record/white-code'),
+      ...readDirectory('vue', 'record/white-code'),
       ...readDirectory('typescript')
-      // ...readDirectory('源码阅读记')
     },
     socialLinks: [
       // {

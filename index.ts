@@ -1,7 +1,7 @@
 // 导入文件系统模块，用于读取目录内容
-import fs from "fs"
+import fs from 'fs'
 // 导入路径处理模块，用于处理文件路径
-import path from "path"
+import path from 'path'
 // 定义匹配.md文件的正则表达式
 const md = /\.md$/
 
@@ -33,21 +33,29 @@ const isMdFile = (fileName: string): boolean => {
  * @param name 目录名称
  * @returns 返回目录结构对象
  */
-export const readDirectory = (name: string): DirectoryStructure => {
+export const readDirectory = (
+  name: string,
+  folderName: string = 'record'
+): DirectoryStructure => {
   // 读取目录下的所有文件
-  const items = fs.readdirSync(path.resolve(__dirname, name))
 
+  const directoryPath = path.resolve(__dirname, `${folderName}/${name}`)
+
+  const items = fs.readdirSync(directoryPath)
+
+  const formatItems = items.map((item, index) => {
+    const isMarkdown = isMdFile(item)
+    return {
+      text: isMarkdown ? `${index + 1}. ${item.replace(md, '')}` : '',
+      link: `/${path.join(folderName, name, item)}`
+    }
+  })
   // 返回格式化后的目录结构
   return {
-    [`/${name}/`]: [
+    [`/${folderName}/${name}/`]: [
       {
         text: name,
-        items: items.map((item, index) => ({
-          // 如果是md文件，则添加序号并移除.md后缀；否则返回空字符串
-          text: isMdFile(item) ? `${index + 1}. ${item.replace(md, "")}` : "",
-          // 生成文件的链接路径
-          link: `/${path.join(name, item)}`
-        }))
+        items: formatItems
       }
     ]
   }
