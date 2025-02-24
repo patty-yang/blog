@@ -13,7 +13,8 @@
   - 数组
   - 对象
   - 函数
-  - promise
+  - [事件循环](eventLoop)
+  - [promise](promise)
 
 ### 2. 布局与渲染
 
