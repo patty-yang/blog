@@ -102,3 +102,5 @@ console.log(styles)
 //   background: red;
 //   color: "red";
 ```
+
+<!-- javascript 语言提升 -> 数组 -->
