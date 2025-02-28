@@ -30,6 +30,33 @@ const config = {
 let currentCount = 0
 ```
 
+## 🎨 模板字符串高级用法
+
+> 💡 模板字符串不仅支持基本的变量插值，还支持更强大的标签模板（Tagged Templates）功能。
+
+### 📝 标签模板示例
+
+```js
+const name = 'es6'
+const test = 'test'
+const text = myTag`Hello,${test}-${name}`
+// 有两个插值，就会把字符串拆成三部分
+// 也就是说，parts 的长度是 args 的长度 + 1
+// text = myTag(['Hello, ', '!'], name) // Hello, es6!
+// text = myTag(['Hello,', '-', ''], test, name) // Hello,test-es6!
+function myTag(parts, ...args) {
+  let str = ''
+  // 遍历 parts 和 args，拼接字符串
+  for (let i = 0; i < parts.length; i++) {
+    str += parts[i] // 添加当前的字符串部分
+    if (i < args.length) {
+      str += args[i] // 添加对应的参数
+    }
+  }
+  return str
+}
+```
+
 ## 📊 幂运算符
 
 > 💡 ES6+ 引入了幂运算符 `**`，提供了一种更简洁的计算方式。
