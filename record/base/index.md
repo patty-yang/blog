@@ -42,17 +42,17 @@
   - 新特性
 
 ### 4. 迭代器与生成器
+
 - [迭代器](iterator)
+  - Iterator 接口实现
+  - 可迭代对象
+  - for...of 循环
+  - 内置迭代器
 - [生成器](generator)
-<!-- ### 4. js -->
-
-<!-- ### 3. 高级特性
-- [Web API](webAPI)
-  - DOM操作
-  - 事件处理
-  - 网络请求 -->
-
-</div>
+  - Generator 函数语法
+  - yield 表达式
+  - 异步应用
+  </div>
 
 <style>
 .learning-path {

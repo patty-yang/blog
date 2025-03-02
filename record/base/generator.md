@@ -78,3 +78,33 @@ function* test2() {
 ```
 
 > 💡 生成器函数内部如需调用其他生成器，记得使用 `yield*` 语法！
+
+## 异步实现
+
+```js
+function* asyncGenerator() {
+  const data1 = yield fetchData1()
+  console.log(data1)
+
+  const data2 = yield fetchData2()
+  console.log(data2)
+}
+
+function run(generator) {
+  const iterator = generator()
+
+  function handle(result) {
+    if (iterator.done) return
+    const promise = result.value
+    promise
+      .then((res) => {
+        handle(iterator.next(res))
+      })
+      .catch((err) => {
+        iterator.throw(err)
+      })
+  }
+}
+
+run(asyncGenerator)
+```
