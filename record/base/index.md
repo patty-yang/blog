@@ -41,6 +41,8 @@
   - 多媒体
   - 新特性
 
+### 4. 迭代器与生成器
+- [迭代器](iterator)
 <!-- ### 4. js -->
 
 <!-- ### 3. 高级特性
@@ -69,6 +71,7 @@
 .learning-path ul {
     list-style-type: none;
     padding-left: 20px;
+    /*color: red;*/
 }
 
 .learning-path a {
