@@ -1,7 +1,5 @@
 ## JavaScript 重学路线
 
-<div class="learning-path">
-
 ### 1. 基础知识
 
 - [JavaScript 基础](base)
@@ -49,10 +47,10 @@
   - for...of 循环
   - 内置迭代器
 - [生成器](generator)
+
   - Generator 函数语法
   - yield 表达式
   - 异步应用
-  </div>
 
 <style>
 .learning-path {
