@@ -1,5 +1,7 @@
 ## JavaScript 重学路线
 
+<div class="learning-path">
+
 ### 1. 基础知识
 
 - [JavaScript 基础](base)
@@ -51,6 +53,8 @@
   - Generator 函数语法
   - yield 表达式
   - 异步应用
+
+</div>
 
 <style>
 .learning-path {
