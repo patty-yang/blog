@@ -69,7 +69,7 @@ while (!result.done){
     const item = result.value 
     result = iterator.next()
 }
-相当于
+// 相当于
 for (const item of array) {
   
 }
