@@ -52,7 +52,8 @@
   - Generator 函数语法
   - yield 表达式
   - 异步应用
-  </div>
+
+</div>
 
 <style>
 .learning-path {
