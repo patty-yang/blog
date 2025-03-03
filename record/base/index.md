@@ -13,7 +13,9 @@
   - 数组
   - 对象
   - 函数
-  - promise
+  - [事件循环](eventLoop)
+  - [promise](promise)
+  - [webAPI](webAPI)
 
 ### 2. 布局与渲染
 
@@ -39,7 +41,18 @@
   - 多媒体
   - 新特性
 
-</div>
+### 4. 迭代器与生成器
+
+- [迭代器](iterator)
+  - Iterator 接口实现
+  - 可迭代对象
+  - for...of 循环
+  - 内置迭代器
+- [生成器](generator)
+  - Generator 函数语法
+  - yield 表达式
+  - 异步应用
+  </div>
 
 <style>
 .learning-path {
@@ -59,6 +72,7 @@
 .learning-path ul {
     list-style-type: none;
     padding-left: 20px;
+    /*color: red;*/
 }
 
 .learning-path a {
