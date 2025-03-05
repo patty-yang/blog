@@ -63,11 +63,11 @@
   - 键值对操作
   - 遍历方法
   - 实践应用
-- [WeakMap](type-set/weakmap)
+- [WeakMap](type-set/weak)
   - 弱引用特性
   - 内存管理
   - 使用场景
-- [WeakSet](type-set/weakset)
+- [WeakSet](type-set/weak)
   - 对象存储
   - 垃圾回收
   - 最佳实践

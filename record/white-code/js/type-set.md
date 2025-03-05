@@ -1,88 +1,90 @@
-## Set 数据结构的实现
+## Set 实现
 
 ```js
 class MySet {
-  constructor(iterator = []) {
-    // 传递的值是否是可迭代对象
-    if (typeof iterator[Symbol.iterator] !== 'function') {
-      throw new TypeError(
-        `${iterator} is not iterable (cannot read property Symbol(Symbol.iterator))`
-      )
+    constructor(iterator = []) {
+        // 传递的值是否是可迭代对象
+        if (typeof iterator[Symbol.iterator] !== 'function') {
+            throw new TypeError(
+                `${iterator} is not iterable (cannot read property Symbol(Symbol.iterator))`
+            )
+        }
+        this._datas = []
+        for (const item of iterator) {
+            this.add(item)
+        }
     }
-    this._datas = []
-    for (const item of iterator) {
-      this.add(item)
+
+    add(value) {
+        if (this.has(value)) return
+        this._datas.push(value)
     }
-  }
 
-  add(value) {
-    if (this.has(value)) return
-    this._datas.push(value)
-  }
-
-  has(value) {
-    for (const data of this._datas) {
-      if (this.isEquals(data, value)) {
-        return true
-      }
+    has(value) {
+        for (const data of this._datas) {
+            if (this.isEquals(data, value)) {
+                return true
+            }
+        }
+        return false
     }
-    return false
-  }
 
-  isEquals(value1, value2) {
-    if (value1 === 0 && value2 === 0) {
-      return true
+    isEquals(value1, value2) {
+        if (value1 === 0 && value2 === 0) {
+            return true
+        }
+        return Object.is(value1, value2)
     }
-    return Object.is(value1, value2)
-  }
 
-  delete(data) {
-    for (let i = 0; i < this._datas.length; i++) {
-      if (this.isEquals(this._datas[i], data)) {
-        this._datas.splice(i, 1)
-        return true
-      }
+    delete(data) {
+        for (let i = 0; i < this._datas.length; i++) {
+            if (this.isEquals(this._datas[i], data)) {
+                this._datas.splice(i, 1)
+                return true
+            }
+        }
+        return false
     }
-    return false
-  }
-  clear() {
-    this._datas = []
-  }
 
-  get size() {
-    return this._datas.length
-  } 
-  // [Symbol.iterator]() {
-  //     let index = 0
-  //     const datas = this._datas
-  //     return {
-  //         next() {
-  //             if(index < datas.length) {
-  //                 return {
-  //                     value: datas[index++],
-  //                     done: false
-  //                 }
-  //             } else {
-  //                 return {
-  //                     value: undefined,
-  //                     done: true
-  //                 }
-  //             }
-  //         }
-  //     }
-  // }
-
-  *[Symbol.iterator]() {
-    for (const data of this._datas) {
-      yield data
+    clear() {
+        this._datas = []
     }
-  }
 
-  forEach(cb) {
-    for (const item of this._datas) {
-      cb(item, item, this)
+    get size() {
+        return this._datas.length
     }
-  }
+
+    // [Symbol.iterator]() {
+    //     let index = 0
+    //     const datas = this._datas
+    //     return {
+    //         next() {
+    //             if(index < datas.length) {
+    //                 return {
+    //                     value: datas[index++],
+    //                     done: false
+    //                 }
+    //             } else {
+    //                 return {
+    //                     value: undefined,
+    //                     done: true
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
+    * [Symbol.iterator]() {
+        for (const data of this._datas) {
+            yield data
+        }
+    }
+
+    forEach(cb) {
+        for (const item of this._datas) {
+            cb(item, item, this)
+        }
+    }
 }
 
 const s = new MySet([1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0])
@@ -100,7 +102,7 @@ console.log(s)
 // console.log(s)
 
 for (const item of s) {
-  console.log(item)
+    console.log(item)
 }
 ```
 
