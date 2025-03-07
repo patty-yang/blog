@@ -76,7 +76,17 @@
   - 拦截操作
 - [Reflect](reflect)
   - 静态方法
+
+
+### 7. 类型化数组
+- [TypedArray 类型化数组](typedArray)
+  - 增强数组的一些 API
+  - 二进制数据处理
+  - ArrayBuffer 与视图
+  <!-- - WebGL 与音视频应用 AI 生成的 暂未接触 -->
 </div>
+
+
 
 <style>
 .learning-path {
