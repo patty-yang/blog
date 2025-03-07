@@ -66,12 +66,16 @@
 - [WeakMap](type-set/weak)
   - 弱引用特性
   - 内存管理
-  - 使用场景
 - [WeakSet](type-set/weak)
   - 对象存储
   - 垃圾回收
-  - 最佳实践
 
+### 6. 代理与反射
+- [Proxy](proxy)
+  - 基本用法
+  - 拦截操作
+- [Reflect](reflect)
+  - 静态方法
 </div>
 
 <style>
