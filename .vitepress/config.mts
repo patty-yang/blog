@@ -1,9 +1,11 @@
 import { defineConfig } from 'vitepress'
-import { readDirectory } from '..'
+import { createSideBar } from '..'
+
+const baseSideBarConfig = createSideBar('base')
+const whiteCodeSideBarConfig = createSideBar('white-code')
 
 export default defineConfig({
   // https://vitepress.dev/reference/site-config#ignoredeadlinks
-  // ignoreDeadLinks: true,
   cleanUrls: true,
   outDir: 'dist',
   lang: 'zh-CN',
@@ -18,23 +20,11 @@ export default defineConfig({
       {
         text: '前端积累',
         items: [
+          { text: '笔记', link: '/notes/base/' },
           { text: 'vue', link: '/notes/vue/' },
           { text: '重学typescript', link: '/notes/typescript/' },
-          { text: '基础巩固', link: '/notes/base/' }
+          { text: '手写代码', link: '/notes/white-code/' }
           // { text: '读万卷书 行万里路', link: '/react/index' },
-        ]
-      },
-      {
-        text: '手写代码',
-        items: [
-          {
-            text: 'js',
-            link: '/notes/white-code/js/'
-          },
-          {
-            text: 'vue',
-            link: '/notes/white-code/vue/'
-          }
         ]
       },
       {
@@ -57,19 +47,15 @@ export default defineConfig({
       // }
     ],
     sidebar: {
-      ...readDirectory('project'),
-      ...readDirectory('base'),
-      ...readDirectory('vue'),
-      ...readDirectory('js', 'notes/white-code'),
-      ...readDirectory('vue', 'notes/white-code'),
-      ...readDirectory('typescript')
+      ...baseSideBarConfig,
+      ...whiteCodeSideBarConfig
     },
-    socialLinks: [
-      // {
-      //   icon: 'github',
-      //   link: 'https://github.com/SunnySeptemberBoy/SunnySeptemberBoy.github.io'
-      // }
-    ],
+    // socialLinks: [
+    // {
+    //   icon: 'github',
+    //   link: 'https://github.com/SunnySeptemberBoy/SunnySeptemberBoy.github.io'
+    // }
+    // ],
     lastUpdated: {
       text: '最后更新时间',
       formatOptions: {
