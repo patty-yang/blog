@@ -18,9 +18,9 @@ export default defineConfig({
       {
         text: '前端积累',
         items: [
-          { text: 'vue', link: '/record/vue/' },
-          { text: '重学typescript', link: '/record/typescript/' },
-          { text: '基础巩固', link: '/record/base/' }
+          { text: 'vue', link: '/notes/vue/' },
+          { text: '重学typescript', link: '/notes/typescript/' },
+          { text: '基础巩固', link: '/notes/base/' }
           // { text: '读万卷书 行万里路', link: '/react/index' },
         ]
       },
@@ -29,11 +29,11 @@ export default defineConfig({
         items: [
           {
             text: 'js',
-            link: '/record/white-code/js/'
+            link: '/notes/white-code/js/'
           },
           {
             text: 'vue',
-            link: '/record/white-code/vue/'
+            link: '/notes/white-code/vue/'
           }
         ]
       },
@@ -42,7 +42,7 @@ export default defineConfig({
         items: [
           {
             text: '项目难点',
-            link: '/record/project/webpack'
+            link: '/notes/project/webpack'
           }
         ]
       }
@@ -60,8 +60,8 @@ export default defineConfig({
       ...readDirectory('project'),
       ...readDirectory('base'),
       ...readDirectory('vue'),
-      ...readDirectory('js', 'record/white-code'),
-      ...readDirectory('vue', 'record/white-code'),
+      ...readDirectory('js', 'notes/white-code'),
+      ...readDirectory('vue', 'notes/white-code'),
       ...readDirectory('typescript')
     },
     socialLinks: [

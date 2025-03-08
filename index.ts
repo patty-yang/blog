@@ -35,7 +35,7 @@ const isMdFile = (fileName: string): boolean => {
  */
 export const readDirectory = (
   name: string,
-  folderName: string = 'record'
+  folderName: string = 'notes'
 ): DirectoryStructure => {
   // 读取目录下的所有文件
 
