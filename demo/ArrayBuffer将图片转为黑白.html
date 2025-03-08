@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <img id="img" alt="" src="../notes/images/render.png" style="width: 500px;height: 300px">
+    <br>
+    <canvas id="canvas" height="500" width="500"></canvas>
+    <script>
+        /**
+         * 将图片转为黑白
+         *
+         * 画布中的 1个图像是由多个像素点组成，每个像素点拥有四个数据： rgba（红、绿、蓝、透明度）
+         *  所以需要将图像的每个像素点设置为 rgb 的平均数值
+         */
+        window.addEventListener('load', () => {
+            const canvas = document.getElementById('canvas')
+            const ctx = canvas.getContext('2d')
+            const img = document.getElementById('img')
+
+            ctx.drawImage(img, 0, 0, img.width, img.height)
+            // 获取画布上从左上角到图片的宽高大小的区域的像素数据
+            const imgData = ctx.getImageData(0, 0, img.width, img.height)
+
+            for (let i = 0; i < imgData.data.length; i += 4) {
+                const red = imgData.data[i]
+                const green = imgData.data[i + 1]
+                const blue = imgData.data[i + 2]
+                const gray = (red + green + blue) / 3
+
+                imgData.data[i] = gray
+                imgData.data[i + 1] = gray
+                imgData.data[i + 2] = gray
+            }
+
+            ctx.putImageData(imgData, 0, 0)
+        })
+
+    </script>
+</div>
+</body>
+</html>

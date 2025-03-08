@@ -1,9 +1,12 @@
 import { defineConfig } from 'vitepress'
-import { readDirectory } from '..'
+import { createSideBar } from '..'
+
+const baseSideBarConfig = createSideBar('base')
+const whiteCodeSideBarConfig = createSideBar('white-code')
 
 export default defineConfig({
   // https://vitepress.dev/reference/site-config#ignoredeadlinks
-  ignoreDeadLinks: true,
+  cleanUrls: true,
   outDir: 'dist',
   lang: 'zh-CN',
   title: '小杨的进阶之路',
@@ -17,23 +20,11 @@ export default defineConfig({
       {
         text: '前端积累',
         items: [
-          { text: 'vue', link: '/record/vue/' },
-          { text: '重学typescript', link: '/record/typescript/' },
-          { text: '基础巩固', link: '/record/base/' }
+          { text: '笔记', link: '/notes/base/' },
+          { text: 'vue', link: '/notes/vue/' },
+          { text: '重学typescript', link: '/notes/typescript/' },
+          { text: '手写代码', link: '/notes/white-code/' }
           // { text: '读万卷书 行万里路', link: '/react/index' },
-        ]
-      },
-      {
-        text: '手写代码',
-        items: [
-          {
-            text: 'js',
-            link: '/record/white-code/js/'
-          },
-          {
-            text: 'vue',
-            link: '/record/white-code/vue/'
-          }
         ]
       },
       {
@@ -41,7 +32,7 @@ export default defineConfig({
         items: [
           {
             text: '项目难点',
-            link: '/record/project/webpack'
+            link: '/notes/project/webpack'
           }
         ]
       }
@@ -56,19 +47,15 @@ export default defineConfig({
       // }
     ],
     sidebar: {
-      ...readDirectory('project'),
-      ...readDirectory('base'),
-      ...readDirectory('vue'),
-      ...readDirectory('js', 'record/white-code'),
-      ...readDirectory('vue', 'record/white-code'),
-      ...readDirectory('typescript')
+      ...baseSideBarConfig,
+      ...whiteCodeSideBarConfig
     },
-    socialLinks: [
-      // {
-      //   icon: 'github',
-      //   link: 'https://github.com/SunnySeptemberBoy/SunnySeptemberBoy.github.io'
-      // }
-    ],
+    // socialLinks: [
+    // {
+    //   icon: 'github',
+    //   link: 'https://github.com/SunnySeptemberBoy/SunnySeptemberBoy.github.io'
+    // }
+    // ],
     lastUpdated: {
       text: '最后更新时间',
       formatOptions: {

@@ -1,61 +1,62 @@
-// 导入文件系统模块，用于读取目录内容
 import fs from 'fs'
-// 导入路径处理模块，用于处理文件路径
 import path from 'path'
-// 定义匹配.md文件的正则表达式
-const md = /\.md$/
 
-// 定义目录项的类型接口
-type DirectoryItem = {
-  text: string // 显示的文本
-  link: string // 链接地址
-}
-
-// 定义目录结构的类型接口
-type DirectoryStructure = {
-  [key: string]: {
-    text: string // 目录名称
-    items: DirectoryItem[] // 目录下的文件列表
-  }[]
+interface SidebarItem {
+  text: string
+  collapsed?: boolean
+  link?: string
+  items?: SidebarItem[]
 }
 
 /**
- * 判断文件是否为markdown文件
- * @param fileName 文件名
- * @returns 如果是.md文件返回true，否则返回false
+ * @description: 生成侧边栏
+ * @param {string} name 文件夹名称
+ * @param {string} folderName 文件夹名称
+ * @return {*}
  */
-const isMdFile = (fileName: string): boolean => {
-  return /\.md$/.test(fileName)
-}
+export const createSideBar = (name, folderName = 'notes') => {
+  const basePath = path.resolve(__dirname, `${folderName}/${name}`)
 
-/**
- * 读取指定目录，生成目录结构
- * @param name 目录名称
- * @returns 返回目录结构对象
- */
-export const readDirectory = (
-  name: string,
-  folderName: string = 'record'
-): DirectoryStructure => {
-  // 读取目录下的所有文件
+  const processDirectory = (dirPath: string): any[] => {
+    const files = fs.readdirSync(dirPath)
 
-  const directoryPath = path.resolve(__dirname, `${folderName}/${name}`)
+    const items: SidebarItem[] = []
 
-  const items = fs.readdirSync(directoryPath)
+    files.forEach((file) => {
+      const fullPath = path.join(dirPath, file)
+      const stat = fs.statSync(fullPath)
 
-  const formatItems = items.map((item, index) => {
-    const isMarkdown = isMdFile(item)
-    return {
-      text: isMarkdown ? `${index + 1}. ${item.replace(md, '')}` : '',
-      link: `/${path.join(folderName, name, item)}`
-    }
-  })
-  // 返回格式化后的目录结构
+      if (stat.isDirectory()) {
+        const subItems = processDirectory(fullPath)
+        if (subItems.length > 0) {
+          items.push({
+            text: file,
+            collapsed: true,
+            items: subItems
+          })
+        }
+      } else if (file.endsWith('.md')) {
+        const fileName = file.replace('.md', '')
+        const relativePath = path.relative(basePath, dirPath)
+        items.push({
+          text: fileName,
+          link: `/${folderName}/${name}/${
+            relativePath ? relativePath + '/' : ''
+          }${fileName === 'index' ? '' : fileName}`
+        })
+      }
+    })
+    return items
+  }
+
+  const sidebarItems = processDirectory(basePath)
+
   return {
-    [`/${folderName}/${name}/`]: [
+    [`/${folderName}/${name}`]: [
       {
         text: name,
-        items: formatItems
+        collapsed: false,
+        items: sidebarItems
       }
     ]
   }
