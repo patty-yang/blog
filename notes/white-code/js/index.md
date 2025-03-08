@@ -2,4 +2,6 @@
 
 [防抖](debounce)
 
-[Map](type-set/map)
+[Map](map.md)
+
+[Set](set.md)
