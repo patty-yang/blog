@@ -30,15 +30,14 @@ const isMdFile = (fileName: string): boolean => {
 
 /**
  * 读取指定目录，生成目录结构
- * @param name 目录名称
+ * @param name
+ * @param folderName
  * @returns 返回目录结构对象
  */
 export const readDirectory = (
   name: string,
   folderName: string = 'notes'
 ): DirectoryStructure => {
-  // 读取目录下的所有文件
-
   const directoryPath = path.resolve(__dirname, `${folderName}/${name}`)
 
   const items = fs.readdirSync(directoryPath)
@@ -50,7 +49,6 @@ export const readDirectory = (
       link: `/${path.join(folderName, name, item)}`
     }
   })
-  // 返回格式化后的目录结构
   return {
     [`/${folderName}/${name}/`]: [
       {
