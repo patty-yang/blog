@@ -4,6 +4,7 @@ import { readDirectory } from '..'
 export default defineConfig({
   // https://vitepress.dev/reference/site-config#ignoredeadlinks
   ignoreDeadLinks: true,
+  cleanUrls: true,
   outDir: 'dist',
   lang: 'zh-CN',
   title: '小杨的进阶之路',
