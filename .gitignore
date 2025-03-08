@@ -23,3 +23,9 @@ pnpm-debug.log*
 *.sln
 *.sw*
 .history
+
+
+# lock file
+yarn.lock
+package-lock.json
+.pnpm-lock.yaml
