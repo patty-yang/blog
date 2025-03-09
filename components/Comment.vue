@@ -6,7 +6,7 @@
     repo-id="R_kgDOLCd40w"
     category="Announcements"
     category-id="DIC_kwDOLCd4084Cnupb"
-    mapping="pathname"
+    mapping="title"
     strict="1"
     reactions-enabled="1"
     emit-metadata="1"
@@ -27,7 +27,7 @@ const route = useRoute()
 const showComment = ref(true)
 watch(
   () => route.path,
-  (v) => {
+  () => {
     showComment.value = false
     nextTick(() => {
       showComment.value = true

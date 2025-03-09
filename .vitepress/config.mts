@@ -18,24 +18,24 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       {
-        text: '前端积累',
+        text: '长期积累',
         items: [
           { text: '笔记', link: '/notes/base/' },
-          { text: 'vue', link: '/notes/vue/' },
-          { text: '重学typescript', link: '/notes/typescript/' },
+          // { text: 'vue', link: '/notes/vue/' },
+          // { text: '重学typescript', link: '/notes/typescript/' },
           { text: '手写代码', link: '/notes/white-code/' }
           // { text: '读万卷书 行万里路', link: '/react/index' },
         ]
       },
-      {
-        text: '项目',
-        items: [
-          {
-            text: '项目难点',
-            link: '/notes/project/webpack'
-          }
-        ]
-      }
+      // {
+      //   text: '项目',
+      //   items: [
+      //     {
+      //       text: '项目难点',
+      //       link: '/notes/project/webpack'
+      //     }
+      //   ]
+      // }
       // {
       //   text: '源码阅读',
       //   items: [
