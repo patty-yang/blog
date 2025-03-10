@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const request = window.indexedDB.open('test', 3);
+
+    request.onupgradeneeded = (e) => {
+        console.log('数据库初始化或者版本升级')
+
+        const db = e.target.result
+
+        const userStore = db.createObjectStore('user')
+        const testStore = db.createObjectStore('test')
+
+        userStore.add({name: 'hello', age: 18}, 'user1')
+        testStore.add({name: 'hello', age: 18}, 'test')
+    }
+
+    request.onsuccess = (e) => {
+        const db = e.target.result
+
+        const transUserAction = db.transaction(['user'], 'readwrite')
+
+        const userStore = transUserAction.objectStore('user')
+
+        userStore.add({name: 'hello', age: 18}, 'user2')
+        userStore.add({name: 'hello', age: 18}, 'user3')
+
+        userStore.delete('user1')
+
+        userStore.put({a:1}, '用户')
+
+        const r = userStore.getAll()
+        r.onsuccess = function (e) {
+            console.log(e.target.result)
+        }
+    }
+
+    request.onerror = (e) => {
+        console.log('connect error')
+    }
+
+
+</script>
+</body>
+</html>
