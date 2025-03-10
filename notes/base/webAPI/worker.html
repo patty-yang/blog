@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .ball {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            transition: left 1s;
+        }
+    </style>
+</head>
+<body>
+<button>点我做一个复杂的计算</button> <span></span>
+<div class="ball"></div>
+
+<script>
+    const btn = document.querySelector('button')
+    const span = document.querySelector('span')
+    const worker = new Worker('./mission.js')
+
+    btn.onclick = () => {
+        worker.postMessage({
+            type: 'run'
+        })
+    }
+
+    worker.onmessage = (e) => {
+        if(e.data.type === 'run-success') {
+            span.innerText = e.data.count
+        }
+    }
+    // btn.onclick = () => {
+    //     let count = 0
+    //     for (let i = 0; i < 10 ** 9; i++) {
+    //         count += 10
+    //     }
+    // }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const ball = document.querySelector(".ball");
+        let direction = 1;
+        let position = 0;
+
+        setInterval(() => {
+            position += direction * 5;
+
+            if (position > 250) {
+                direction = -1;
+            } else if (position < 0) {
+                direction = 1;
+            }
+
+            ball.style.left = position + 'px';
+        }, 100);
+    });
+</script>
+</body>
+</html>
