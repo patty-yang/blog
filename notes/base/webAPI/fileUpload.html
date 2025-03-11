@@ -65,8 +65,38 @@
 
             fileInputChange(e) {
                 this.tableData.push(...e.target.files)
+
+                // const CHUNK_SIZE = 5 * 1024 * 1024
+                // const result = []
+                // const chunkLength = Math.ceil(file.size / CHUNK_SIZE)
+                // for (let i = 0; i < chunkLength; i++) {
+                //     const chunk = this.getChunk(file,CHUNK_SIZE,i)
+                //     result.push(chunk)
+                // }
             },
 
+            // getChunk(file,size,index) {
+            //     return new Promise((resolve) => {
+            //         const start = index * size
+            //         const end = start + size
+            //         const chunkFile = file.slice(start, end)
+            //
+            //         const fileReader = new FileReader()
+            //         fileReader.onload = e => {
+            //             const arrayBuffer = e.target.result
+            //             const hash = SparkMD5.ArrayBuffer.hash(arrayBuffer)
+            //             resolve({
+            //                 start,
+            //                 end,
+            //                 chunkFile,
+            //                 index,
+            //                 hash
+            //             })
+            //         }
+            //         fileReader.readAsArrayBuffer(chunkFile)
+            //
+            //     })
+            // },
 
             // 文件夹
             scanDirClick() {
