@@ -6,7 +6,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky",
-    "dev": "vitepress dev --port 1324",
+    "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview"
   },

@@ -66,5 +66,10 @@ export default defineConfig({
     search: {
       provider: 'local'
     }
+  },
+  vite: {
+    server: {
+      port: 1324
+    }
   }
 })
