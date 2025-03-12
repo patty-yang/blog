@@ -19,6 +19,7 @@
 <button>点我做一个复杂的计算</button> <span></span>
 <div class="ball"></div>
 
+<script src="run.js"></script>
 <script>
     const btn = document.querySelector('button')
     const span = document.querySelector('span')
@@ -42,23 +43,6 @@
     //     }
     // }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const ball = document.querySelector(".ball");
-        let direction = 1;
-        let position = 0;
-
-        setInterval(() => {
-            position += direction * 5;
-
-            if (position > 250) {
-                direction = -1;
-            } else if (position < 0) {
-                direction = 1;
-            }
-
-            ball.style.left = position + 'px';
-        }, 100);
-    });
 </script>
 </body>
 </html>
