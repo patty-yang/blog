@@ -15,7 +15,7 @@
   - 函数
   - [事件循环](03-事件循环)
   - [promise](04-promise)
-  - [webAPI](05-webAPI)
+
 
 ### 2. 布局与渲染
 
@@ -41,7 +41,18 @@
   - 多媒体
   - 新特性
 
-### 4. 迭代器与生成器
+### 4. webAPI
+- [拖拽](webAPI/01-拖拽)
+  - `dragstart`
+  - `drag`
+  - `dragend`
+  - ... 
+- [文件](webAPI/02-文件API)
+  - `Blob`
+  - `File`
+  - `FileReader`
+- [web worker](webAPI/05-worker)
+### 5. 迭代器与生成器
 
 - [迭代器](10-迭代器)
   - Iterator 接口实现
@@ -53,7 +64,7 @@
   - yield 表达式
   - 异步应用
 
-### 5. 集合类型
+### 6. 集合类型
 
 - [Set 集合](type-set/set)
   - 基本用法与特性
@@ -70,7 +81,7 @@
   - 对象存储
   - 垃圾回收
 
-### 6. 代理与反射
+### 7. 代理与反射
 
 - [Proxy](12-proxy)
   - 基本用法
@@ -78,7 +89,7 @@
 - [Reflect](13-reflect)
   - 静态方法
 
-### 7. 类型化数组
+### 8. 类型化数组
 
 - [TypedArray 类型化数组](14-typedArray)
   - 增强数组的一些 API
