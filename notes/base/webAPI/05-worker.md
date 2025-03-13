@@ -37,7 +37,7 @@ Web Worker 提供了在后台线程中运行脚本的能力，不会阻塞主线
 <button>点我做一个复杂的计算</button>
 <div class="ball"></div>
 <!-- 让球动起来 -->
-<script src="./run.js"></script>
+<script src="../../../demo/run.js"></script>
 <script>
     const btn = document.querySelector('button')
 
@@ -78,7 +78,7 @@ Web Worker 提供了在后台线程中运行脚本的能力，不会阻塞主线
 <body>
 <button>点我做一个复杂的计算</button>
 <div class="ball"></div>
-<script src="./run.js"></script>
+<script src="../../../demo/run.js"></script>
 <script>
     const btn = document.querySelector('button')
     const worker = new Worker('./woker.js') // [!code ++] 
@@ -90,14 +90,14 @@ Web Worker 提供了在后台线程中运行脚本的能力，不会阻塞主线
             count += 10 // [!code --]
         } // [!code --] 
     } // [!code --]
-    
+
     btn.onclick = () => { // [!code ++]
         worker.postMessage({ // [!code ++]
             type: 'run' // [!code ++]
         }) // [!code ++]
     } // [!code ++]
     worker.onmessage = (e) => { // [!code ++]
-        if(e.data.type === 'run-success') { // [!code ++]
+        if (e.data.type === 'run-success') { // [!code ++]
             console.log(e.data.count) // [!code ++]
         } // [!code ++]
     } // [!code ++]
