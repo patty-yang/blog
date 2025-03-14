@@ -43,15 +43,28 @@
 
 ### 4. webAPI
 - [拖拽](webAPI/01-拖拽)
-  - `dragstart`
-  - `drag`
-  - `dragend`
+  - dragstart
+  - drag
+  - dragend
   - ... 
 - [文件](webAPI/02-文件API)
-  - `Blob`
-  - `File`
-  - `FileReader`
+  - Blob
+  - File
+  - FileReader
 - [web worker](webAPI/05-worker)
+- [history](webAPI/06-history)
+  - pushState
+  - replaceState
+  - go
+  - back
+- [地理位置 geolocation](webAPI/07-geolocation)
+  - getCurrentPosition
+  - watchPosition
+  - clearWatch
+- [剪切板](webAPI/08-clipBoard)
+  - read 
+  - white 
+  - ClipboardItem 图片
 ### 5. 迭代器与生成器
 
 - [迭代器](10-迭代器)
