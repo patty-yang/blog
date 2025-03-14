@@ -3,6 +3,7 @@ import { createSideBar } from '..'
 
 const baseSideBarConfig = createSideBar('base')
 const whiteCodeSideBarConfig = createSideBar('white-code')
+const packageManageBarConfig = createSideBar('package-manage')
 
 export default defineConfig({
   // https://vitepress.dev/reference/site-config#ignoredeadlinks
@@ -11,22 +12,27 @@ export default defineConfig({
   lang: 'zh-CN',
   title: '小杨的进阶之路',
   description: ' ',
-  lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    // logo: '/logo.png',
+    logo: '/logo.png',
     nav: [
-      { text: '首页', link: '/' },
-      {
-        text: '长期积累',
-        items: [
-          { text: '笔记', link: '/notes/base/' },
-          // { text: 'vue', link: '/notes/vue/' },
-          // { text: '重学typescript', link: '/notes/typescript/' },
-          { text: '手写代码', link: '/notes/white-code/' }
-          // { text: '读万卷书 行万里路', link: '/react/index' },
-        ]
-      },
+      { text: '前端积累', link: '/notes/base/' },
+      { text: '手写代码', link: '/notes/white-code/' },
+      { text: 'node', link: '/node/' },
+
+
+      // { text: '首页', link: '/' },
+      // {
+      //   text: '长期积累',
+      //   items: [
+      //     { text: '笔记', link: '/notes/base/' },
+      //     { text: '包管理器', link: '/notes/package-manage/' },
+      //     // { text: 'vue', link: '/notes/vue/' },
+      //     // { text: '重学typescript', link: '/notes/typescript/' },
+      //     { text: '手写代码', link: '/notes/white-code/' }
+      //     // { text: '读万卷书 行万里路', link: '/react/index' },
+      //   ]
+      // },
       // {
       //   text: '项目',
       //   items: [
@@ -48,7 +54,8 @@ export default defineConfig({
     ],
     sidebar: {
       ...baseSideBarConfig,
-      ...whiteCodeSideBarConfig
+      ...whiteCodeSideBarConfig,
+      ...packageManageBarConfig
     },
     // socialLinks: [
     // {
@@ -60,11 +67,22 @@ export default defineConfig({
       text: '最后更新时间',
       formatOptions: {
         dateStyle: 'full',
-        timeStyle: 'medium'
-      }
+        timeStyle: 'medium',
+      },
     },
+
+    docFooter: {
+      prev: '上一篇',
+      next: '下一篇'
+    },
+
     search: {
       provider: 'local'
+    }
+  },
+  vite: {
+    server: {
+      port: 1324
     }
   }
 })

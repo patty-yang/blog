@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            console.log(position, 'position')
+            const { coords } = position
+            console.log({
+                latitude: coords.latitude, // 纬度
+                longitude: coords.longitude, // 经度
+                accuracy: coords.accuracy, // 精确度（米）
+                altitude: coords.altitude, // 海拔（米）
+                altitudeAccuracy: coords.altitudeAccuracy, // 海拔精确度
+                heading: coords.heading, // 方向（度）
+                speed: coords.speed // 速度（米/秒）
+            })
+        },
+        (error) => {
+            console.error('获取位置失败:', error.message)
+        }
+    )
+</script>
+</body>
+</html>

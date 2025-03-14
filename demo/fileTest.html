@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .drop-container {
+        width: 200px;
+        height: 200px;
+        border: 2px solid #000;
+    }
+</style>
+<body>
+
+<input multiple type="file">
+<div class="drop-container"></div>
+</body>
+<script>
+    const fileInput = document.querySelector('input')
+    const container = document.querySelector('.drop-container')
+
+    // fileInput.addEventListener('change', e => {
+    //     console.log(e.target.files)
+    // })
+
+    container.addEventListener('dragover', e => e.preventDefault())
+    container.addEventListener('drop', e => {
+        e.preventDefault()
+        console.log(e.dataTransfer.files)
+    })
+
+    fileInput.addEventListener('change', e => {
+        const reader = new FileReader()
+        reader.addEventListener('load', (e) => {
+            console.log(e.target.result, 'e.target.result')
+        })
+        const url = reader.readAsDataURL(e.target.files[0])
+        console.log(url)
+    })
+
+
+</script>
+</html>

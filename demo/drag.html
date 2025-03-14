@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 5px;
+            background-color: #eee;
+            cursor: grab;
+        }
+
+        .dragging {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+<div class="content"></div>
+<ul id="sorttbalelist">
+    <li draggable="true">1</li>
+    <li draggable="true">2</li>
+    <li draggable="true">3</li>
+    <li draggable="true">4</li>
+    <li draggable="true">5</li>
+</ul>
+<script>
+    const sorttablelist = document.getElementById('sorttbalelist')
+
+    let dragElement = null
+    sorttablelist.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', 'this is text')
+        e.dataTransfer.setData('text/html', '<p>this is html</p>')
+        e.target.classList.add('dragging')
+        dragElement = e.target
+    })
+
+    sorttablelist.addEventListener('dragover', (e) => {
+        e.preventDefault()
+        e.dataTransfer.dropEffect = 'move'
+        if (e.target !== dragElement && e.target.tagName === 'LI') {
+            const targetMsg = e.target.getBoundingClientRect()
+            const targetHeight = targetMsg.height
+            // 鼠标相对于浏览器的距离 - 元素距离浏览器的距离
+            const mouseY = e.clientY - targetMsg.top
+            if (mouseY < targetHeight / 2) {
+                sorttablelist.insertBefore(dragElement, e.target)
+            } else {
+                sorttablelist.insertBefore(dragElement, e.target.nextSibling)
+            }
+        }
+    })
+    sorttablelist.addEventListener('dragend', (e) => {
+        e.target.classList.remove('dragging')
+        dragElement = null
+    })
+
+    const content = document.querySelector('.content')
+    sorttablelist.addEventListener('drop', (e) => {
+        const text = e.dataTransfer.getData('text/plain')
+        const html = e.dataTransfer.getData('text/html')
+        content.innerHTML = text
+    })
+</script>
+</body>
+</html>

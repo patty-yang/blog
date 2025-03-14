@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>复制文本内容</h3>
+<p style="width: 400px">
+    1、七日不见，如隔一周。
+    2、明天的事情后天就知道了。
+    3、我不说话的时候就代表我没说话
+    4、我前脚刚走，后脚就跟上了。
+    5、这个猪死之前是活的
+    6、当你看完这句话的时候，这句话就结束了
+    7、谁能想到当我还是一个孩子的时候,我还只是一个孩子。
+    8、众所周知，蝉的翅膀非常薄，到底有多薄呢 薄如蝉翼。
+    9、如果你这句话没错的话 应该是对的。
+    10、听君一席话如听一席话
+</p>
+
+<img src="https://img1.baidu.com/it/u=2172818577,3783888802&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1422" alt="">
+<button>一键复制</button>
+</body>
+<script>
+    document.addEventListener('copy', e => {
+
+        console.log('复制', e.clipboardData)
+        readClipboard()
+    })
+
+    document.addEventListener('paste', e => {
+        console.log('粘贴', e)
+    })
+
+
+    document.addEventListener('cut', e => {
+        console.log('剪切', e)
+    })
+
+
+    const btn = document.querySelector('button')
+    const content = document.querySelector('p')
+    btn.onclick = async () => {
+        const text = content.innerText
+        await navigator.clipboard.writeText(text)
+        const value = await navigator.clipboard.readText()
+        console.log(value)
+    }
+
+    async function readClipboard() {
+        try {
+            const clipboardItems = await navigator.clipboard.read()
+            for (const clipboardItem of clipboardItems) {
+
+                for (const type of clipboardItem.types) {
+                    const blob = await clipboardItem.getType(type)
+                    const fr = new FileReader()
+                    fr.onload = (e) => {
+                        console.log(e.target.result)
+                    }
+                    fr.readAsText(blob)
+                }
+            }
+        } catch (err) {
+            console.error('读取失败:', err)
+        }
+    }
+</script>
+</html>

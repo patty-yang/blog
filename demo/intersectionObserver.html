@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .container {
+      display: grid;
+      justify-content: space-between;
+      grid-template-columns: repeat(auto-fill, 200px);
+      grid-gap: 10px;
+    }
+  </style>
+  <body>
+    <div class="container"></div>
+    <script>
+      const container = document.querySelector('.container')
+
+      for (let i = 0; i < 100; i++) {
+        const div = document.createElement('div')
+        div.classList.add('item')
+
+        const img = document.createElement('img')
+        img.src = 'https://picsum.photos/id/237/200/300'
+        img.dataset.src = `https://picsum.photos/200/300?a=${i}`
+        div.appendChild(img)
+        container.appendChild(div)
+      }
+
+      const ob = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              const img = entry.target
+              img.src = img.dataset.src
+              ob.unobserve(img)
+            } else {
+            }
+          }
+        },
+        {
+          root: null,
+          threshold: 0.5
+        }
+      )
+      const imgs = document.querySelectorAll('img[data-src]')
+      imgs.forEach((img) => {
+        ob.observe(img)
+      })
+    </script>
+  </body>
+</html>
