@@ -12,7 +12,6 @@ export default defineConfig({
   lang: 'zh-CN',
   title: '小杨的进阶之路',
   description: ' ',
-  // lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: '/logo.png',
@@ -68,9 +67,15 @@ export default defineConfig({
       text: '最后更新时间',
       formatOptions: {
         dateStyle: 'full',
-        timeStyle: 'medium'
-      }
+        timeStyle: 'medium',
+      },
     },
+
+    docFooter: {
+      prev: '上一篇',
+      next: '下一篇'
+    },
+
     search: {
       provider: 'local'
     }
