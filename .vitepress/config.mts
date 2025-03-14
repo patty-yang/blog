@@ -3,6 +3,7 @@ import { createSideBar } from '..'
 
 const baseSideBarConfig = createSideBar('base')
 const whiteCodeSideBarConfig = createSideBar('white-code')
+const packageManageBarConfig = createSideBar('package-manage')
 
 export default defineConfig({
   // https://vitepress.dev/reference/site-config#ignoredeadlinks
@@ -14,13 +15,14 @@ export default defineConfig({
   lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    // logo: '/logo.png',
+    logo: '/logo.png',
     nav: [
       { text: '首页', link: '/' },
       {
         text: '长期积累',
         items: [
           { text: '笔记', link: '/notes/base/' },
+          { text: '包管理器', link: '/notes/package-manage/' },
           // { text: 'vue', link: '/notes/vue/' },
           // { text: '重学typescript', link: '/notes/typescript/' },
           { text: '手写代码', link: '/notes/white-code/' }
@@ -48,7 +50,8 @@ export default defineConfig({
     ],
     sidebar: {
       ...baseSideBarConfig,
-      ...whiteCodeSideBarConfig
+      ...whiteCodeSideBarConfig,
+      ...packageManageBarConfig
     },
     // socialLinks: [
     // {
