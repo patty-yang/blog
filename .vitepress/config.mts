@@ -3,7 +3,6 @@ import { createSideBar } from '..'
 
 const baseSideBarConfig = createSideBar('base')
 const whiteCodeSideBarConfig = createSideBar('white-code')
-const packageManageBarConfig = createSideBar('package-manage')
 
 export default defineConfig({
   // https://vitepress.dev/reference/site-config#ignoredeadlinks
@@ -55,7 +54,6 @@ export default defineConfig({
     sidebar: {
       ...baseSideBarConfig,
       ...whiteCodeSideBarConfig,
-      ...packageManageBarConfig
     },
     // socialLinks: [
     // {
