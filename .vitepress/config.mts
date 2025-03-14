@@ -12,12 +12,13 @@ export default defineConfig({
   title: '小杨的进阶之路',
   description: ' ',
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
+    // https://vitepress.dev/reference/default-theme-config d
     logo: '/logo.png',
     nav: [
       { text: '前端积累', link: '/notes/base/' },
       { text: '手写代码', link: '/notes/white-code/' },
       { text: 'node', link: '/node/' },
+      { text: '组件库搭建', link: '/library/' },
 
 
       // { text: '首页', link: '/' },
