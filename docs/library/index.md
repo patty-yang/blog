@@ -19,5 +19,6 @@
   - loading
   - 自定义图标
   - 不同尺寸
-  - 原型
+- [Collapse]()
+- [Tooltip]()
 </div>
