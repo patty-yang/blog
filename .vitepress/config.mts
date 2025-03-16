@@ -4,7 +4,7 @@ import { createSideBar } from '..'
 const baseSideBarConfig = createSideBar('base')
 const whiteCodeSideBarConfig = createSideBar('white-code')
 const librarySideConfig = createSideBar('library')
-
+const vueSideConfig = createSideBar('vue')
 export default defineConfig({
   // https://vitepress.dev/reference/site-config#ignoredeadlinks
   cleanUrls: true,
@@ -16,11 +16,22 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config d
     logo: '/logo.png',
     nav: [
-      { text: '前端积累', link: '/docs/base/' },
+      {
+        text: '前端积累',
+        items: [
+          {
+            text: '基础知识',
+            link: '/docs/base/'
+          },
+          {
+            text: 'vue',
+            link: '/docs/vue/'
+          }
+        ]
+      },
       { text: '手写代码', link: '/docs/white-code/' },
       { text: 'node', link: '/node/' },
-      { text: '组件库搭建', link: '/docs/library/' },
-
+      { text: '组件库搭建', link: '/docs/library/' }
 
       // { text: '首页', link: '/' },
       // {
@@ -56,7 +67,8 @@ export default defineConfig({
     sidebar: {
       ...baseSideBarConfig,
       ...whiteCodeSideBarConfig,
-      ...librarySideConfig
+      ...librarySideConfig,
+      ...vueSideConfig
     },
     // socialLinks: [
     // {
@@ -68,8 +80,8 @@ export default defineConfig({
       text: '最后更新时间',
       formatOptions: {
         dateStyle: 'full',
-        timeStyle: 'medium',
-      },
+        timeStyle: 'medium'
+      }
     },
 
     docFooter: {
