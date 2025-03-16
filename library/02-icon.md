@@ -1,4 +1,9 @@
-# ICON 组件
+# 🎨 ICON 图标组件
+
+## 使用方式分析
+
+- 传入 `icon`、`beat`、`spin` ，这些都是 `fortawesome` 提供的属性
+- 传入 `type` ，切换不同的主题风格
 
 ## 📁 目录结构
 
@@ -19,15 +24,18 @@
 4.  传入 `fortawesome` 默认配置
 
     1.  ```vue
-        <template>  // [!code ++]
-          <font-awesome-icon v-bind="props" /> // [!code ++]
-        </template> // [!code ++]
+        <template>
+          // [!code ++] <font-awesome-icon v-bind="props" /> // [!code ++]
+        </template>
+        // [!code ++]
 
-        <script lang="ts" setup> // [!code ++]
+        <script lang="ts" setup>
+        // [!code ++]
         import type { FontAwesomeIconProps } from '@fortawesome/vue-fontawesome' // [!code ++]
         const props = defineProps<FontAwesomeIconProps>() // [!code ++]
-        </script> // [!code ++]
-        ``` 
+        </script>
+        // [!code ++]
+        ```
 
     2.  扩展 type
 
@@ -40,24 +48,28 @@
 
         ```vue
         <template>
-          <i class="c-icon" :class="{ [`c-icon-${type}`]: type }"> // [!code ++]
-            <font-awesome-icon v-bind="filterProps" /> 
-          </i> // [!code ++]
+          <i class="c-icon" :class="{ [`c-icon-${type}`]: type }">
+            // [!code ++]
+            <font-awesome-icon v-bind="filterProps" />
+          </i>
+          // [!code ++]
         </template>
         <script setup lang="ts">
         import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-        import type { FontAwesomeIconProps } from '@fortawesome/vue-fontawesome' 
+        import type { FontAwesomeIconProps } from '@fortawesome/vue-fontawesome'
         import { computed } from 'vue' // [!code ++]
 
-        interface Props extends FontAwesomeIconProps { // [!code ++]
+        interface Props extends FontAwesomeIconProps {
+          // [!code ++]
           type?: 'primary' | 'success' | 'warning' | 'danger' | 'info' // [!code ++]
         } // [!code ++]
-        const props = defineProps<Props>() 
+        const props = defineProps<Props>()
 
         defineOptions({
           name: 'CIcon'
         })
-        const filterProps = computed(() => { // [!code ++]
+        const filterProps = computed(() => {
+          // [!code ++]
           const { type, ...rest } = props // [!code ++]
           return rest // [!code ++]
         }) // [!code ++]
