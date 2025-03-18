@@ -12,3 +12,26 @@
 
 [computed](computed) -->
 
+## 实现响应式
+
+Referer: [Proxy](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy#%E6%96%B9%E6%B3%95)
+
+- 第一步需要监测对象的读写
+  - 读
+    - 属性获取
+    - 遍历
+    - 是否存在某属性
+  - 写
+    - 属性设置
+    - 新增
+    - 删除
+- 第二步需要建立数据与函数之间的映射关系
+
+
+<div class="learning-path">
+
+### 响应式01
+- get、set、delete拦截
+- track、trigger 目录结构及方法定义
+
+</div>
