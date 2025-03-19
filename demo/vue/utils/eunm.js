@@ -13,3 +13,9 @@ export const TriggerOpTypes = {
   ADD: 'add',
   DELETE: 'delete'
 }
+
+/**
+ *
+ * @type {symbol} 特殊标识，表明是否需要原始对象
+ */
+export const RAW = Symbol('raw')
