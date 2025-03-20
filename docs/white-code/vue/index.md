@@ -28,10 +28,4 @@ Referer: [Proxy](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Referen
 - 第二步需要建立数据与函数之间的映射关系
 
 
-<div class="learning-path">
 
-### 响应式01
-- get、set、delete拦截
-- track、trigger 目录结构及方法定义
-
-</div>
