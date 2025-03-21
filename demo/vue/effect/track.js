@@ -22,7 +22,7 @@ export function enableTracking() {
 
 // ![image](https://raw.githubusercontent.com/patty-yang/pic/img/test/202503211308033.png)
 function track(target, type, key) {
-  if (!shouldTrack) {
+  if (!shouldTrack || !activeEffect) {
     return false
   }
   //   一层一层的查找，查找到后存储

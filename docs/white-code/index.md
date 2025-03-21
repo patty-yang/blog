@@ -19,8 +19,12 @@
   - 数组变异方法：push、shift 依赖收集优化
 - [🔄 effect](vue/03-响应式)
   - 数据与函数的关联
-    - 数据追踪的问题
-    - 依赖收集与清理
-    - 冗余依赖的处理
-    - 多层嵌套 effect 的处理
+  - 数据追踪的问题
+  - 依赖收集与清理
+  - 冗余依赖的处理
+  - 多层嵌套 effect 的处理
+  - 响应式数据与函数的关联关系
+    - ![image](https://raw.githubusercontent.com/patty-yang/pic/img/test/202503211308033.png)
+  - effect 回调交由外部处理 `lazy`
+  - effect 更新派发交由外部处理 `scheduler`
 </div>

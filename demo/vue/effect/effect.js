@@ -8,7 +8,8 @@ export let activeEffect = undefined
 
 const effectStack = []
 
-export function effect(fn) {
+export function effect(fn, options = {}) {
+  const { lazy } = options
   const environment = () => {
     try {
       activeEffect = environment
@@ -22,7 +23,11 @@ export function effect(fn) {
     }
   }
   environment.deps = [] // 记录该环境函数在哪些集合中使用
-  environment()
+
+  if (!lazy) {
+    environment()
+  }
+  return environment
 }
 
 export function cleanup(environment) {
