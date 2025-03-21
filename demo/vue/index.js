@@ -1,5 +1,6 @@
 import { reactive } from './reactive.js'
 
+import { effect } from './effect/effect.js'
 const obj = {
   a: 1,
   b: 2,
@@ -8,8 +9,18 @@ const obj = {
     age: 18
   }
 }
+const state = reactive(obj)
 
-const proxyObj = reactive(obj)
+function fn() {
+  console.log('fn')
+  state.a = state.a + 1
+}
+
+effect(fn)
+
+state.a = 100
+
+// const proxyObj = reactive(obj)
 // proxyObj.c.name
 // proxyObj.a = 2
 // proxyObj.d = 4
@@ -17,9 +28,9 @@ const proxyObj = reactive(obj)
 // 'a' in proxyObj
 // for (let key in proxyObj) {}
 
-const arr = [1, obj, 3]
-
-const proxyArr = reactive(arr)
+// const arr = [1, obj, 3]
+//
+// const proxyArr = reactive(arr)
 // proxyArr[0]
 // proxyArr.length
 // for (let key in proxyArr) {
@@ -42,7 +53,7 @@ const proxyArr = reactive(arr)
  */
 
 // 写
-proxyArr[7] = 100 // ❌
+// proxyArr[7] = 100 // ❌
 /**
  * 如果隐式的长度改变，不会触发拦截
  */

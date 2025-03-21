@@ -1,4 +1,6 @@
-import { TrackOpTypes } from '../utils/eunm.js'
+import { targetMap, activeEffect } from './effect.js'
+
+import { TrackOpTypes, ITERATE_KEY } from '../utils/eunm.js'
 
 /**
  * @type {boolean} 控制是否需要进行依赖收集
@@ -17,16 +19,40 @@ export function enableTracking() {
  * @param type 操作类型
  * @param key 操作的属性
  */
+
+// ![image](https://raw.githubusercontent.com/patty-yang/pic/img/test/202503211308033.png)
 function track(target, type, key) {
-  if(!shouldTrack) return;
-  // 如果是遍历操作 key不存在
-  if (type === TrackOpTypes.ITERATE) {
-    return
+  if (!shouldTrack) {
+    return false
   }
-  // console.log(
-  //   '需要收集依赖 ',
-  //   `原始对象为:${target},操作是:${type},属性值为:${key}`
-  // )
+  //   一层一层的查找，查找到后存储
+  let propMap = targetMap.get(target)
+  if (!propMap) {
+    targetMap.set(target, (propMap = new Map()))
+  }
+
+  // 如果是遍历的话，key 是 undefined
+  if (type === TrackOpTypes.ITERATE) {
+    key = ITERATE_KEY
+  }
+
+  let typeMap = propMap.get(key)
+  if (!typeMap) {
+    propMap.set(key, (typeMap = new Map()))
+  }
+
+  // 根据 type 值查找对应的 set
+  let depSet = typeMap.get(type)
+  if (!depSet) {
+    depSet = new Set()
+    typeMap.set(type, depSet)
+  }
+
+  //   set 集合找到的话 就可以存储依赖了
+  if (!depSet.has(activeEffect)) {
+    depSet.add(activeEffect)
+    activeEffect.deps.push(depSet)
+  }
 }
 
 export { track }

@@ -60,13 +60,16 @@ function cleanup(environment) {
 
 function effect(fn) {
   const environment = () => {
-    activeEffect = environment
-    // 模拟真实的函数栈
-    effectStack.push(environment)
-    cleanup(environment)
-    fn()
-    effectStack.pop()
-    activeEffect = effectStack[effectStack.length-1]
+    try {
+      activeEffect = environment
+      // 模拟真实的函数栈
+      effectStack.push(environment)
+      cleanup(environment)
+      return fn()
+    } finally {
+      effectStack.pop()
+      activeEffect = effectStack[effectStack.length - 1]
+    }
     // activeEffect = null
   }
   environment.deps = [] // 记录该环境函数在哪些集合中使用
@@ -152,7 +155,7 @@ function effect(fn) {
 // 原因分析，函数栈有问题，模拟一个栈
 // 解决方式:
 effect(() => {
-  effect(() =>{
+  effect(() => {
     effect(() => {
       state.c
     })
