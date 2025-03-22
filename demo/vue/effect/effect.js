@@ -1,11 +1,15 @@
 /**
  * 对象的映射关系
- * @type {WeakMap<WeakKey, any>}
+ * @type {WeakMap<object, Map<string | symbol, Set<Function>>>}
  */
 export const targetMap = new WeakMap()
 
 export let activeEffect = undefined
 
+/**
+ * 副作用函数栈，用于处理嵌套effect的情况
+ * @type {Function[]}
+ */
 const effectStack = []
 
 export function effect(fn, options = {}) {
@@ -13,7 +17,6 @@ export function effect(fn, options = {}) {
   const environment = () => {
     try {
       activeEffect = environment
-      // 模拟真实的函数栈
       effectStack.push(environment)
       cleanup(environment)
       return fn()
