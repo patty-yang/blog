@@ -15,8 +15,9 @@ function trigger(target, type, key) {
     if (effectFn === activeEffect) continue
     if (effectFn.options && effectFn.options.scheduler) {
       effectFn.options.scheduler(effectFn)
+    }else {
+      effectFn()
     }
-    effectFn()
   }
 }
 

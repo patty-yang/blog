@@ -1,25 +1,112 @@
 import { reactive } from './reactive.js'
 
 import { effect } from './effect/effect.js'
+import { computed } from './effect/computed.js'
 const obj = {
   a: 1,
-  b: 2,
-  c: {
-    name: 'sum-one',
-    age: 18
-  }
+  b: 2
+  // c: {
+  //   name: 'sum-one',
+  //   age: 18
+  // }
 }
 const state = reactive(obj)
 
-function fn() {
-  console.log('fn')
-  state.a = state.a + 1
-}
-
-effect(fn)
-
+const sum = computed(() => {
+  console.log('computed')
+  return state.a + state.b
+})
+effect(() => {
+ console.log('render', sum.value)
+})
 state.a = 100
+// state.b = 3
+// console.log(sum.value)
+// console.log(sum.value)
+// console.log(sum.value)
+// console.log(sum.value)
+// console.log(sum.value)
+// console.log(sum.value)
+// console.log(sum.value)
+// console.log(sum.value)
+// console.log(sum.value)
+// state.a = 20
 
+// computed 还有中情况
+// 函数依赖了计算属性的值
+
+
+
+
+// effect test1
+// function fn() {
+//   console.log('fn')
+//   state.a = state.a + 1
+// }
+//
+// effect(fn)
+// state.a = 100
+
+// effect test2
+// effect(() => {
+//   if(state.a === 1) {
+//     state.b
+//   }else {
+//     state.c
+//   }
+//   console.log(('执行 effect 1'))
+// })
+// effect(() => {
+//   console.log(state.c)
+//   console.log(('执行 effect 2'))
+// })
+//
+// state.a = 2
+// state.c = 2
+// state.b = 2
+
+// effect test3
+// let isRun = false
+// const effectFn = effect(fn, {
+//   lazy: true,
+//   scheduler: (eff) => {
+//       // console.log(eff)
+//     Promise.resolve().then(() => {
+//       if(!isRun) {
+//         isRun = true
+//         eff()
+//       }
+//     })
+//   }
+// })
+
+// effectFn()
+// state.a++
+// state.a++
+// state.a++
+// state.a++
+// state.a++
+// state.a++
+// state.a++
+// state.a++
+
+// let isRun = false
+// const effectFn = effect(fn, {
+//   lazy: true,
+//   scheduler: (eff) => {
+//     Promise.resolve().then(() => {
+//       if(!isRun) {
+//         isRun = true
+//         eff()
+//       }
+//     })
+//   }
+// })
+// effectFn()
+// state.a++
+// state.a++
+// state.a++
+// state.a++
 // const proxyObj = reactive(obj)
 // proxyObj.c.name
 // proxyObj.a = 2
