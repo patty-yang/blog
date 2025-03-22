@@ -2,24 +2,45 @@ import { reactive } from './reactive.js'
 
 import { effect } from './effect/effect.js'
 import { computed } from './effect/computed.js'
+
 const obj = {
   a: 1,
   b: 2
-  // c: {
-  //   name: 'sum-one',
-  //   age: 18
-  // }
 }
-const state = reactive(obj)
 
-const sum = computed(() => {
-  console.log('computed')
-  return state.a + state.b
-})
-effect(() => {
- console.log('render', sum.value)
-})
-state.a = 100
+// const state = reactive(obj)
+
+// const sum = computed(() => {
+//   console.log('computed 执行')
+//   return state.a + state.b
+// })
+
+// console.log(sum.value)
+// state.a ++
+// console.log(sum.value)
+// state.a ++
+// console.log(sum.value)
+// console.log(sum.value)
+// console.log(sum.value)
+
+// const obj = {
+//   a: 1,
+//   b: 2
+//   // c: {
+//   //   name: 'sum-one',
+//   //   age: 18
+//   // }
+// }
+// const state = reactive(obj)
+
+// const sum = computed(() => {
+//   console.log('computed')
+//   return state.a + state.b
+// })
+// effect(() => {
+//   console.log('render', sum.value)
+// })
+// state.a = 100
 // state.b = 3
 // console.log(sum.value)
 // console.log(sum.value)
@@ -34,9 +55,6 @@ state.a = 100
 
 // computed 还有中情况
 // 函数依赖了计算属性的值
-
-
-
 
 // effect test1
 // function fn() {
