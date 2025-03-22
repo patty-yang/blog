@@ -13,7 +13,6 @@ export function enableTracking() {
   shouldTrack = true
 }
 
-
 /**
  *  依赖收集器
  * @param target 原始对象
@@ -24,8 +23,7 @@ export function enableTracking() {
 // ![image](https://raw.githubusercontent.com/patty-yang/pic/img/test/202503211308033.png)
 function track(target, type, key) {
   if (!shouldTrack || !activeEffect) return
-
-  //   一层一层的查找，查找到后存储
+  // 一层一层的查找，查找到后存储
   let propMap = targetMap.get(target)
   if (!propMap) {
     targetMap.set(target, (propMap = new Map()))
@@ -48,7 +46,7 @@ function track(target, type, key) {
     typeMap.set(type, depSet)
   }
 
-  //   set 集合找到的话 就可以存储依赖了
+  // set 集合找到的话 存储依赖
   if (!depSet.has(activeEffect)) {
     depSet.add(activeEffect)
     activeEffect.deps.push(depSet)

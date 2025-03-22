@@ -26,6 +26,7 @@ export function effect(fn, options = {}) {
     }
   }
   environment.deps = [] // 记录该环境函数在哪些集合中使用
+  environment.options = options
 
   if (!lazy) {
     environment()
