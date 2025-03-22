@@ -5,6 +5,7 @@ const baseSideBarConfig = createSideBar('base')
 const whiteCodeSideBarConfig = createSideBar('white-code')
 const librarySideConfig = createSideBar('library')
 const vueSideConfig = createSideBar('vue')
+
 export default defineConfig({
   // https://vitepress.dev/reference/site-config#ignoredeadlinks
   cleanUrls: true,

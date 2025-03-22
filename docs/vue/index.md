@@ -33,9 +33,7 @@
 #### ⚡ 什么是响应式
 
 - [🔄 响应式](响应式/01-vue)
-  - vue1 -> vue2
-  - 数据的响应式
-  - Object.defineProperty 与 Proxy
-  - vue3 中的 ref reactive
+  - reactive
+  - effect 
 </div>
 </div>

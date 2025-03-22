@@ -1,17 +1,3 @@
-<!-- ## 顺序
-
-
-[实现响应式](响应式_01)
-
-
-[响应式中的 effect](响应式_02). reference: [antfu](https://antfu.me/posts/binfe-2020-zh)
-
-
-[最终版](响应式_03)
-
-
-[computed](computed) -->
-
 ## 实现响应式
 
 Referer: [antfu](https://antfu.me/posts/binfe-2020-zh)
@@ -28,6 +14,3 @@ Referer: [Proxy](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Referen
     - 新增
     - 删除
 - 第二步需要建立数据与函数之间的映射关系
-
-
-
