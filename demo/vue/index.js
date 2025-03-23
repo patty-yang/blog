@@ -2,14 +2,47 @@ import { reactive } from './reactive.js'
 
 import { effect } from './effect/effect.js'
 import { computed } from './effect/computed.js'
-
+import { watch } from './effect/watch.js'
 const obj = {
   a: 1,
   b: 2
 }
 
-// const state = reactive(obj)
+const state = reactive(obj)
 
+// watch(
+//   () => state.a,
+//   (newValue, oldValue) => {
+//     console.log('watch 执行')
+//     console.log(newValue, oldValue)
+//   },
+//     {
+//       immediate: true
+//     }
+// )
+
+// state.a ++
+
+// 单个 ref
+watch(state.a, (newX) => {
+  console.log(`a is ${newX}`)
+})
+
+// getter 函数
+watch(
+  () => state.a + state.b,
+  (sum) => {
+    console.log(`sum of a + b is: ${sum}`)
+  }
+)
+
+// 多个来源组成的数组
+watch([state.a, () => state.b], ([newX, newY]) => {
+  console.log(`a is ${newX} and b is ${newY}`)
+})
+
+state.a++
+state.b++
 // const sum = computed(() => {
 //   console.log('computed 执行')
 //   return state.a + state.b
