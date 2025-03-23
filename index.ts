@@ -14,7 +14,7 @@ interface SidebarItem {
  * @param {string} folderName 文件夹名称
  * @return {*}
  */
-export const createSideBar = (name, folderName = 'notes') => {
+export const createSideBar = (name, folderName = 'docs') => {
   const basePath = path.resolve(__dirname, `${folderName}/${name}`)
 
   const processDirectory = (dirPath: string): any[] => {
