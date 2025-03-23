@@ -91,6 +91,7 @@ function computed(getterOrOptions) {
   return {
     get value() {
       getter() // 获取最新值
+      // 如果在一个函数中使用 计算属性，手动收集依赖
       track(obj, TrackOpTypes.GET, 'value') // 收集依赖
       return obj._value // 返回计算结果
     },
