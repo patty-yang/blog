@@ -1,11 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { createSideBar } from '..'
 
-const baseSideBarConfig = createSideBar('base')
-const whiteCodeSideBarConfig = createSideBar('white-code')
-const librarySideConfig = createSideBar('library')
-const vueSideConfig = createSideBar('vue')
-
 export default defineConfig({
   // https://vitepress.dev/reference/site-config#ignoredeadlinks
   cleanUrls: true,
@@ -27,6 +22,14 @@ export default defineConfig({
           {
             text: 'vue',
             link: '/docs/vue/'
+          },
+          {
+            text: 'react',
+            link: '/docs/react/'
+          },
+          {
+            text: 'node',
+            link: '/docs/node/'
           }
         ]
       },
@@ -66,10 +69,12 @@ export default defineConfig({
       // }
     ],
     sidebar: {
-      ...baseSideBarConfig,
-      ...whiteCodeSideBarConfig,
-      ...librarySideConfig,
-      ...vueSideConfig
+      ...createSideBar('base'),
+      ...createSideBar('white-code'),
+      ...createSideBar('library'),
+      ...createSideBar('vue'),
+      ...createSideBar('node'),
+      ...createSideBar('react')
     },
     // socialLinks: [
     // {
