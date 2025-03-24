@@ -1,4 +1,4 @@
-# 知识的深度与谦逊的高度
+<!-- # 知识的深度与谦逊的高度 -->
 
 <div style="text-align: center; font-size: 1.5em; font-weight: bold; margin: 20px 0;">
   你知道的越多，不知道的也越多
