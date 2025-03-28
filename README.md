@@ -5,4 +5,14 @@
 加油。
 
 TODO:
-将 reactive 实现放进来
+终端进行中英文翻译
+
+```html
+
+<fieldset>
+  <legend>
+    标题
+  </legend>
+  <p>123</p>
+</fieldset>
+```
