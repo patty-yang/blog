@@ -119,7 +119,7 @@ async function copy2() {
   rs.on('data', (chunk) => {
     const flag = ws.write(chunk)
     if (!flag) {
-      rs.pause(); //暂停读取
+      rs.pause() //暂停读取
     }
   })
 
@@ -160,3 +160,72 @@ copy3()
 ```
 
 ## Commonjs 中的模块化。
+
+## mysql
+
+CREATE DATABASE name
+DROP DATABASE
+
+字段类型
+bit 占 1 位，0 或 1，false 或 true
+init 占 32 位 整数
+decimal(M,N) 能精确计算的实数，M 是总的字位数， N 是小数位数
+char(n) 固定长度 n 位的字符
+varchar(n) 长度可变，最大长度位 n 的字符
+text: 大量的字符
+date: 仅日期
+datetime: 日期和时间
+time: 仅时间
+
+根据设计原则，每个表都应该有主键，表示唯一值
+
+- 主键：
+  - 唯一
+  - 不能更改
+  - 无业务含义
+- 主键和外键
+- 表关系
+  - 一对一关系
+    - 一个 A 对应一个 B，一个 B 对应一个 A
+      - 用户信息
+  - 一对多
+    - 一个 A 对应多个 B，一个 B 对应一个 A，A 和 B 是一对多，B 和 A 是多对一
+      - 班级和学生(一个班可以有多个学生，一个学生只属于一个班)，用户和文章(
+        一个用户可以发布多个文章，一个文章只属于一个用户)
+      - 在多的一端的表上设置外键，对应到另一张表的主键
+  - 多对多
+    - 一个 A 对应多个 B，一个 B 对应多个 A
+      - 购物车
+        - 需要新建一张关系表，关系表至少包含两个外键，分别对应到两张表
+
+```sql-- 增加语句
+-- INSERT INTO d_stu (number_id, `name`, birthday, sex, phone, d_class_id)
+-- VALUES
+-- ('200', '你好', '2005-1-1', TRUE, '13303333300', 1)
+-- 多个
+-- INSERT INTO d_stu (number_id, `name`, birthday, sex, phone, d_class_id)
+-- VALUES
+-- ('200', '你好', '2005-1-1', DEFAULT, '13303333300', 1),
+-- ('201', '你好', '2005-1-1', DEFAULT, '13303333300', 1),
+-- ('202', '你好', '2005-1-1', DEFAULT, '13303333300', 1);
+-- 修改
+-- UPDATE d_stu SET `name` = '中文' WHERE id=8;
+-- 删除
+-- DELETE FROM d_stu WHERE `name` = '你好';
+-- 查询 -> 单表
+-- SELECT * from `user` WHERE ID = 2
+SELECT id,`name`,
+	CASE WHEN ismale = 1 THEN '男' ELSE '女' END AS '性别',
+	CASE WHEN salary >= 10000 THEN '高' ELSE '女' END AS '工资'
+FROM employee
+SELECT * from department WHERE companyId IN (1,2)
+SELECT * from employee WHERE location is not NULL;
+SELECT * from employee WHERE `name` like '%云%'
+SELECT * from employee WHERE `name` like '_云'
+SELECT * FROM `user` WHERE loginId = 'admin' AND loginPwd = '123123'
+SELECT * FROM employee ORDER BY employee.joinDate DESC LIMIT 10,10
+查询 -> 连表
+SELECT * from `user`, company
+SELECT * from department as d LEFT JOIN employee as e
+ON d.id = e.deptid
+```
