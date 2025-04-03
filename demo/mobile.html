@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta
+          id="view"
+          name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>Document</title>
+</head>
+
+<!-- <script>
+//  viewport 缩放， 缩放成固定的 css 宽度
+(function () {
+  const view = document.getElementById('view')
+  // 当前设备‰的宽度
+  // const curWidth = document.documentElement.clientWidth
+  // // 计算缩放的尺寸
+  // const targetWidth = 375
+  // const scale = curWidth / targetWidth
+  // view.content = 'initial-scale=' + scale + ',user-scalable=no,minimum-scale=' + scale + ',maximum-scale=' + scale + '';
+
+
+  // viewport缩放，缩放成物理像素
+  // 750 的设计稿
+  // 750px * 缩放值 = 375px -> 缩放值 = 375px / 750px = 1/DPR
+  const scale = 1 / window.devicePixelRatio
+  view.content = 'initial-scale=' + scale + ',user-scalable=no,minimum-scale=' + scale + ',maximum-scale=' + scale + '';
+
+  //   最大的意义是开发者和设计者的像素都是统一的，因为设计者是按照 750px 但是如果将宽度设置为750px 只能保证在750px下没有问题，如果大的话 还是有适配问题。
+
+
+})()
+</script> -->
+<!-- <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: 375px;
+    height: 50px;
+    background-color: #333;
+    margin-bottom: 15px;
+  }
+
+  .list div {
+    width: 93.75px;
+    height: 100px;
+    float: left;
+  }
+
+  .list div:nth-child(1) {
+    background-color: red;
+  }
+
+  .list div:nth-child(2) {
+    background-color: green;
+  }
+
+  .list div:nth-child(3) {
+    background-color: gold;
+  }
+
+  .list div:nth-child(4) {
+    background-color: greenyellow;
+  }
+</style> -->
+<body>
+<!-- <div class="container">
+  <div class="list">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div> -->
+</body>
+</html>
