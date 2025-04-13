@@ -179,7 +179,7 @@ export default defineConfig({
 })
 ```
 
-2. 🌟 **Glob 模式**：使用通配符匹配多个文件
+1. 🌟 **Glob 模式**：使用通配符匹配多个文件
 
 ```js
 export default defineConfig({
@@ -189,7 +189,7 @@ export default defineConfig({
 })
 ```
 
-3. ❌ **排除规则**：通过特定语法排除不需要的目录
+1. ❌ **排除规则**：通过特定语法排除不需要的目录
 
 ```js
 export default defineConfig({
@@ -202,7 +202,7 @@ export default defineConfig({
 })
 ```
 
-4. 配置 node_modules 的 includes excludes
+1. 配置 node_modules 的 includes excludes
 
 ## 🏗️ Vite 生产版本构建
 
