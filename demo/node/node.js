@@ -2,7 +2,6 @@ setImmediate(() => {
   console.log(1)
 })
 
-
 process.nextTick(() => {
   console.log(2)
   process.nextTick(() => {
@@ -20,7 +19,6 @@ Promise.resolve().then(() => {
 })
 
 // timers  poll check
-
 
 /**
  * 数据库
