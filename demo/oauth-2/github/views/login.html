@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <button id="btn">使用 GitHub 登陆</button>
+  </body>
+  <script>
+    btn.onclick = () => {
+      console.log(2)
+      const githubAuthPath = 'https://github.com/login/oauth/authorize'
+      location.href = `${githubAuthPath}?client_id=Ov23liOGG44q85zr98vk`
+    }
+  </script>
+</html>

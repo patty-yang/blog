@@ -27,14 +27,16 @@ export default defineConfig({
             text: 'react',
             link: '/docs/react/'
           },
+
           {
-            text: 'node',
-            link: '/docs/node/'
+            text: '面试准备',
+            link: '/docs/面试准备/'
           }
         ]
       },
       { text: '手写代码', link: '/docs/white-code/' },
-      { text: 'node', link: '/node/' },
+      { text: 'OAuth2', link: '/docs/OAuth2/' },
+      { text: 'node', link: '/docs/node/' },
       { text: '组件库搭建', link: '/docs/library/' }
 
       // { text: '首页', link: '/' },
