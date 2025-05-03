@@ -1,28 +1,26 @@
 import fs from 'fs'
 import path from 'path'
 
-interface SidebarItem {
+type SidebarItem = {
   text: string
-  collapsed?: boolean
   link?: string
+  collapsed?: boolean
   items?: SidebarItem[]
 }
-
 /**
  * @description: 生成侧边栏
  * @param {string} name 文件夹名称
  * @param {string} folderName 文件夹名称
  * @return {*}
  */
-export const createSideBar = (name, folderName = 'docs') => {
+export const createSideBar = (
+  name: string,
+  folderName: string = 'docs'
+): Record<string, SidebarItem[]> => {
   const basePath = path.resolve(__dirname, `${folderName}/${name}`)
 
-  const processDirectory = (dirPath: string): any[] => {
-    const files = fs.readdirSync(dirPath)
-
-    const items: SidebarItem[] = []
-
-    files.forEach((file) => {
+  const processDirectory = (dirPath: string): SidebarItem[] => {
+    return fs.readdirSync(dirPath).reduce<SidebarItem[]>((items, file) => {
       const fullPath = path.join(dirPath, file)
       const stat = fs.statSync(fullPath)
 
@@ -45,8 +43,8 @@ export const createSideBar = (name, folderName = 'docs') => {
           }${fileName === 'index' ? '' : fileName}`
         })
       }
-    })
-    return items
+      return items
+    }, [])
   }
 
   const sidebarItems = processDirectory(basePath)
