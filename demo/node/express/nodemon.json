@@ -1,4 +1,4 @@
 {
-    "watch": [ "*.js","*.json" ],
-    "ignore": [ "**/node_modules/**","package*.json","nodemon.json" ]
+  "watch": ["*.js", "*.json"],
+  "ignore": ["**/node_modules/**", "package*.json", "nodemon.json"]
 }

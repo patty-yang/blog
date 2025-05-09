@@ -17,13 +17,13 @@ const server = http.createServer((req, res) => {
   // res.setHeader('a', '1')
   // res.statusCode = 302
   res.end(
-      JSON.stringify({
-        code: 200,
-        data: {
-          name: 'hello',
-          age: 18
-        }
-      })
+    JSON.stringify({
+      code: 200,
+      data: {
+        name: 'hello',
+        age: 18
+      }
+    })
   )
 })
 
