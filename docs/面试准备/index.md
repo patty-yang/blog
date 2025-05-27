@@ -387,3 +387,5 @@ document.addEventListener(
 15. 在解析过程中还会触发一系列的事件，当 DOM 树完成后会处罚 DOMContentLoaded 事件，当所有资源加载完成后会触发 loaded 事件
 
 ## 如何有新版本通知用户
+
+## 一个表单有 1000+ 字段如何在更新的时候如何保留原资源
