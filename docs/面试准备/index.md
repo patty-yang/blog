@@ -385,3 +385,5 @@ document.addEventListener(
 13. 根据响应头的其他内容完成缓存、cookie 的设置
 14. 浏览器从上到下解析 HTML，然后生成 DOM 树、CSSDOM 树，然后一边生成，一边将 html、css 合并为渲染树，随后对渲染树的每个节点计算位置和大小，最后把每个节点利用 GPU 绘制到屏幕
 15. 在解析过程中还会触发一系列的事件，当 DOM 树完成后会处罚 DOMContentLoaded 事件，当所有资源加载完成后会触发 loaded 事件
+
+## 如何有新版本通知用户
