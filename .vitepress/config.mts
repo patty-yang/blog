@@ -31,52 +31,24 @@ export default defineConfig({
           {
             text: '面试准备',
             link: '/docs/面试准备/'
-          }
+          },
+          { text: 'OAuth2', link: '/docs/OAuth2/' }
         ]
       },
-      { text: '手写代码', link: '/docs/white-code/' },
-      { text: 'OAuth2', link: '/docs/OAuth2/' },
-      { text: 'node', link: '/docs/node/' },
-      { text: '组件库搭建', link: '/docs/library/' }
 
-      // { text: '首页', link: '/' },
-      // {
-      //   text: '长期积累',
-      //   items: [
-      //     { text: '笔记', link: '/docs/base/' },
-      //     { text: '包管理器', link: '/docs/package-manage/' },
-      //     // { text: 'vue', link: '/docs/vue/' },
-      //     // { text: '重学typescript', link: '/docs/typescript/' },
-      //     { text: '手写代码', link: '/docs/white-code/' }
-      //     // { text: '读万卷书 行万里路', link: '/react/index' },
-      //   ]
-      // },
-      // {
-      //   text: '项目',
-      //   items: [
-      //     {
-      //       text: '项目难点',
-      //       link: '/docs/project/webpack'
-      //     }
-      //   ]
-      // }
-      // {
-      //   text: '源码阅读',
-      //   items: [
-      //     {
-      //       text: 'vue3',
-      //       link: '/源码阅读记/vue3'
-      //     }
-      //   ]
-      // }
+      { text: '手写代码', link: '/docs/white-code/' },
+      // { text: 'node', link: '/docs/node/' },
+      { text: '网络', link: '/docs/network/' }
     ],
     sidebar: {
       ...createSideBar('base'),
       ...createSideBar('white-code'),
       ...createSideBar('library'),
       ...createSideBar('vue'),
-      ...createSideBar('node'),
-      ...createSideBar('react')
+      // ...createSideBar('node'),
+      ...createSideBar('react'),
+      ...createSideBar('面试准备'),
+      ...createSideBar('network')
     },
     // socialLinks: [
     // {
