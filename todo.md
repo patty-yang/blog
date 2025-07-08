@@ -32,3 +32,7 @@
 - Task(任务)
 - Action(行动)
 - Result(结果)
+
+
+- ts 自动生成 api 
+- 部署 nestjs
