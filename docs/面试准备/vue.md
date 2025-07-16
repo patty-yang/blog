@@ -88,4 +88,49 @@
         - `deps` `nextDeps`
         - `subs`
         - TODO: 待梳理
-      
+
+## nextTick
+
+- 同步代码中多次对响应式数据做了修改，多次修改会被合并为一次，之后通过最终的修改结果**异步**去更新 DOM
+- 如果不合并的话，数据一改变同步更新，会导致频繁的重绘和重排
+
+> 异步更新带来了 `无法及时获取更新后的 DOM 值`  
+> 那么解决方案就是: **将获取`DOM`数据的同步代码**包装成一个微任务,浏览器在完成一次渲染后,就会立即执行微任务
+
+
+
+```js
+class Component {
+  _data = {
+    name: ''
+  }
+  pending = false
+  constructor() {
+    this.data = new Proxy(this._data, {
+      set: (target, key, value) => {
+        const res = Reflect.set(target, key, value)
+        if (!this.pending) {
+          this.pending = true
+          Promise.resolve().then(() => {
+            this.render();
+            this.pending = false
+          })
+        }
+        return res
+      }
+    });
+  }
+
+  render() {
+    console.log(this.data.name);
+  }
+}
+
+const comp = new Component();
+
+comp.data.name = '1';
+comp.data.name = '2';
+comp.data.name = '3';
+comp.data.name = '4';
+
+```
