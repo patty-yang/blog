@@ -27,7 +27,6 @@ export default defineConfig({
             text: 'react',
             link: '/docs/react/'
           },
-
           {
             text: '面试准备',
             link: '/docs/面试准备/'
@@ -37,7 +36,7 @@ export default defineConfig({
       },
 
       { text: '手写代码', link: '/docs/white-code/' },
-      // { text: 'node', link: '/docs/node/' },
+      { text: '项目', link: '/docs/project/vite' },
       { text: '网络', link: '/docs/network/' }
     ],
     sidebar: {
@@ -45,7 +44,7 @@ export default defineConfig({
       ...createSideBar('white-code'),
       ...createSideBar('library'),
       ...createSideBar('vue'),
-      // ...createSideBar('node'),
+      ...createSideBar('project'),
       ...createSideBar('react'),
       ...createSideBar('面试准备'),
       ...createSideBar('network')
