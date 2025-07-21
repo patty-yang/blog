@@ -74,6 +74,7 @@ uni.scss
   flex-wrap: $isWrapper;
   flex-direction: $vertical_style;
 }
+
 $base-color: #f25037;
 ```
 
@@ -134,10 +135,8 @@ uni.getSystemInfoSync 获取设备的系统信息
 
 - input bug
 
-  - uni-input 提交会剩 1-2 字符
-  - css 调整
+    - uni-input 提交会剩 1-2 字符
+    - css 调整
 
 - 小程序不支持 refs 方法
 
-<!-- - 短信定制服务
-  -  -->
