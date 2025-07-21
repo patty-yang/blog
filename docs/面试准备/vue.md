@@ -97,14 +97,13 @@
 > 异步更新带来了 `无法及时获取更新后的 DOM 值`  
 > 那么解决方案就是: **将获取`DOM`数据的同步代码**包装成一个微任务,浏览器在完成一次渲染后,就会立即执行微任务
 
-
-
 ```js
 class Component {
   _data = {
     name: ''
   }
   pending = false
+
   constructor() {
     this.data = new Proxy(this._data, {
       set: (target, key, value) => {
