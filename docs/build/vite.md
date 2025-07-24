@@ -9,7 +9,8 @@
 #### define
 
 - 🔧 定义全局常量替换
-  > 💡 Vite 使用 esbuild 的 define 特性进行常量替换。表达式必须是 JSON 可序列化的值（包括 null、boolean、number、string、array、object）或单个标识符。对于非字符串值，系统会自动将其转换为 JSON 字符串格式。
+  > 💡 Vite 使用 esbuild 的 define 特性进行常量替换。表达式必须是 JSON 可序列化的值（包括
+  null、boolean、number、string、array、object）或单个标识符。对于非字符串值，系统会自动将其转换为 JSON 字符串格式。
 
 #### resolve
 
@@ -108,23 +109,23 @@ export default defineConfig({
 
 1. 📥 **模块转换**
 
-   - 将 CommonJS/UMD 格式模块转换为 ESM 格式
-   - 确保所有模块都符合 ESM 规范
+    - 将 CommonJS/UMD 格式模块转换为 ESM 格式
+    - 确保所有模块都符合 ESM 规范
 
 2. 📦 **依赖打包**
 
-   - 合并依赖文件
-   - 减少开发环境中的浏览器请求数量
+    - 合并依赖文件
+    - 减少开发环境中的浏览器请求数量
 
 3. 🗜️ **代码优化**
 
-   - 执行代码最小化处理
-   - 实现高效的代码压缩
+    - 执行代码最小化处理
+    - 实现高效的代码压缩
 
 4. ⚡ **增量编译**
-   - 智能检测变更
-   - 仅编译新增或修改的部分
-   - 提高构建效率
+    - 智能检测变更
+    - 仅编译新增或修改的部分
+    - 提高构建效率
 
 ### 💾 缓存机制
 
@@ -140,9 +141,9 @@ esbuild 将构建产物缓存至 `node_modules/.vite` 目录：
 
 1. 📦 包管理器的锁文件内容变更
 
-   - package-lock.json
-   - pnpm-lock.yaml
-   - yarn.lock
+    - package-lock.json
+    - pnpm-lock.yaml
+    - yarn.lock
 
 2. ⚙️ vite.config.js 相关配置改动
 
@@ -160,12 +161,12 @@ Vite 提供了灵活的入口点配置机制：
 
 - 🔍 **默认行为**：
 
-  - Vite 自动扫描 `index.html` 以检测预构建依赖
-  - 会智能跳过 `node_modules` 和 `build.outDir` 目录
+    - Vite 自动扫描 `index.html` 以检测预构建依赖
+    - 会智能跳过 `node_modules` 和 `build.outDir` 目录
 
 - 🎯 **自定义入口**：
-  - 当配置了 `build.rollupOptions.input` 时，Vite 将使用这些入口点
-  - 如需更精细的控制，可直接通过 `entries` 指定依赖入口
+    - 当配置了 `build.rollupOptions.input` 时，Vite 将使用这些入口点
+    - 如需更精细的控制，可直接通过 `entries` 指定依赖入口
 
 支持以下配置方式：
 
