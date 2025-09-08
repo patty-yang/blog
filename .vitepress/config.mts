@@ -37,7 +37,8 @@ export default defineConfig({
 
       { text: '手写代码', link: '/docs/white-code/' },
       { text: '项目', link: '/docs/project/vite' },
-      { text: '网络', link: '/docs/network/' }
+      { text: '网络', link: '/docs/network/' },
+      { text: 'build', link: '/docs/build/' },
     ],
     sidebar: {
       ...createSideBar('base'),
@@ -47,7 +48,8 @@ export default defineConfig({
       ...createSideBar('project'),
       ...createSideBar('react'),
       ...createSideBar('面试准备'),
-      ...createSideBar('network')
+      ...createSideBar('network'),
+      ...createSideBar('build'),
     },
     // socialLinks: [
     // {
