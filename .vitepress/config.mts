@@ -15,30 +15,30 @@ export default defineConfig({
       {
         text: '前端积累',
         items: [
-          {
-            text: '基础知识',
-            link: '/docs/base/'
-          },
+          // {
+          //   text: '基础知识',
+          //   link: '/docs/base/'
+          // },
           {
             text: 'vue',
             link: '/docs/vue/'
           },
-          {
-            text: 'react',
-            link: '/docs/react/'
-          },
-          {
-            text: '面试准备',
-            link: '/docs/面试准备/'
-          },
-          { text: 'OAuth2', link: '/docs/OAuth2/' }
+          // {
+          //   text: 'react',
+          //   link: '/docs/react/'
+          // },
+          // {
+          //   text: '面试准备',
+          //   link: '/docs/面试准备/'
+          // },
+          // { text: 'OAuth2', link: '/docs/OAuth2/' }
         ]
       },
 
       { text: '手写代码', link: '/docs/white-code/' },
-      { text: '项目', link: '/docs/project/vite' },
-      { text: '网络', link: '/docs/network/' },
-      { text: 'build', link: '/docs/build/' },
+      // { text: '项目', link: '/docs/project/vite' },
+      // { text: '网络', link: '/docs/network/' },
+      // { text: 'build', link: '/docs/build/' },
     ],
     sidebar: {
       ...createSideBar('base'),
