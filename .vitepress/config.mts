@@ -1,5 +1,5 @@
-import { defineConfig } from 'vitepress'
-import { createSideBar } from '..'
+import {defineConfig} from 'vitepress'
+import {createSideBar} from '..'
 
 export default defineConfig({
   // https://vitepress.dev/reference/site-config#ignoredeadlinks
@@ -21,7 +21,11 @@ export default defineConfig({
           // },
           {
             text: 'vue',
-            link: '/docs/vue/'
+            link: '/docs/vue-Map/'
+          },
+          {
+            text: 'vue3.6',
+            link: '/docs/vue-AlienSignals/'
           },
           // {
           //   text: 'react',
@@ -35,21 +39,22 @@ export default defineConfig({
         ]
       },
 
-      { text: '手写代码', link: '/docs/white-code/' },
+      {text: '手写代码', link: '/docs/white-code/'},
       // { text: '项目', link: '/docs/project/vite' },
       // { text: '网络', link: '/docs/network/' },
       // { text: 'build', link: '/docs/build/' },
     ],
     sidebar: {
-      ...createSideBar('base'),
-      ...createSideBar('white-code'),
-      ...createSideBar('library'),
-      ...createSideBar('vue'),
-      ...createSideBar('project'),
-      ...createSideBar('react'),
-      ...createSideBar('面试准备'),
-      ...createSideBar('network'),
-      ...createSideBar('build'),
+      // ...createSideBar('base'),
+      // ...createSideBar('white-code'),
+      // ...createSideBar('library'),
+      ...createSideBar('vue-Map'),
+      // ...createSideBar('project'),
+      // ...createSideBar('react'),
+      // ...createSideBar('面试准备'),
+      // ...createSideBar('network'),
+      // ...createSideBar('build'),
+      ...createSideBar('vue-AlienSignals'),
     },
     // socialLinks: [
     // {
