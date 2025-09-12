@@ -20,12 +20,12 @@ export default defineConfig({
           //   link: '/docs/base/'
           // },
           {
-            text: 'vue',
+            text: 'vue(Map、Set)',
             link: '/docs/vue-Map/'
           },
           {
-            text: 'vue3.6',
-            link: '/docs/vue-AlienSignals/'
+            text: 'vue(AlienSignals)',
+            link: '/docs/vue-AlienSignals/overview'
           },
           // {
           //   text: 'react',
@@ -54,7 +54,7 @@ export default defineConfig({
       // ...createSideBar('面试准备'),
       // ...createSideBar('network'),
       // ...createSideBar('build'),
-      ...createSideBar('vue-AlienSignals'),
+      // ...createSideBar('vue-AlienSignals'),
     },
     // socialLinks: [
     // {
