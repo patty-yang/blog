@@ -101,6 +101,7 @@ packages:
 - **按包执行脚本**: `pnpm --filter @scope/pkg run dev`
 - **对全部包执行**: `pnpm -r run build`
 - **只对依赖链执行**: `pnpm -r --filter @scope/pkg... run build`
+- **装其他包** `pnpm install @vue/shared --workspace --filter reactivity`
 
 ---
 

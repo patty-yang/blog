@@ -54,7 +54,7 @@ export default defineConfig({
       // ...createSideBar('面试准备'),
       // ...createSideBar('network'),
       // ...createSideBar('build'),
-      // ...createSideBar('vue-AlienSignals'),
+      ...createSideBar('vue-AlienSignals'),
     },
     // socialLinks: [
     // {
