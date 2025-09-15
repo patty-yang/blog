@@ -25,7 +25,7 @@ export default defineConfig({
           },
           {
             text: 'vue(AlienSignals)',
-            link: '/docs/vue-AlienSignals/overview'
+            link: 'docs/AlienSignals'
           },
           // {
           //   text: 'react',
