@@ -22,12 +22,16 @@
 
 <!-- 之所以将代码写在 md 里面，而非单独封装为 Vue 组件，因为 aside 不会动态刷新，参考 https://github.com/vuejs/vitepress/issues/2686 -->
 <script setup lang="ts">
-import {data as posts} from '../utils/posts.data.mjs'; import {computed} from 'vue';
+import {computed} from 'vue';
+import {data as posts} from '../utils/posts.data.mjs'; 
 
 const postGroups = computed(() => {
   const groups = new Map<string, typeof posts>();
   posts.forEach((post) => {
-    const title = post.url.split('/')[2];
+    const {url, date} = post
+    const name = url.split('/')[2];
+    const title = `${date.year}/${Number.isNaN(+name) ? name : ''}`;
+
     if (!groups.has(title)) {
       groups.set(title, []);
     }
@@ -45,7 +49,10 @@ const postGroups = computed(() => {
       :aria-label="`Permalink to &quot;${title}&quot;`"
       >
     </a>
-    <div class="post-title hollow-text source-han-serif">{{ title }}</div>
+    <div class="post-title hollow-text source-han-serif">
+        <span>{{ title.split('/')[0] }}</span>
+        <span style="font-size: 18px">{{ title.split('/')[1] }}</span>
+    </div>
   </h2>
   <div class="post-container" v-for="post in postGroup" :key="post.url">
     <a :href="post.url">{{ post.title }}</a>
