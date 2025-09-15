@@ -1,3 +1,10 @@
+---
+title: OAuth2 协议
+date: 2023-03-20
+tags:
+  - OAuth2
+---
+
 # OAuth2 协议 🔐
 
 :::tip OAuth
@@ -20,7 +27,9 @@
 :::
 
 ## 获取令牌的方式
+
 - 授权码(authorization-code)
 - 密码式(password)
 - 客户端凭证(client credentials)
-不管哪种授权方式,第三方应用申请令牌前,<font color=red>必须先到系统备案</font> ,拿到身份识别码: <font color=red>clientID clientSecret(客户端ID、密钥)</font>
+  不管哪种授权方式,第三方应用申请令牌前,<font color=red>必须先到系统备案</font> ,拿到身份识别码: <font color=red>
+  clientID clientSecret(客户端ID、密钥)</font>

@@ -1,3 +1,10 @@
+---
+title: vue 其他组件
+date: 2024-05-06
+tags:
+  - vue
+---
+
 有点不知道怎么分类了， 先都放在这儿吧
 
 > Referer: [Vue 官方文档](https://vuejs.ac.cn/guide/built-ins/suspense#combining-with-other-components)

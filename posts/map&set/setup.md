@@ -1,3 +1,11 @@
+---
+title: vue setup
+date: 2024-05-04
+tags:
+  - vue
+---
+
+
 ## setup 语法糖
 
 <!--

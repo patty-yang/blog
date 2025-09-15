@@ -1,4 +1,9 @@
-# 🌟 虚拟 DOM
+---
+title: vue 虚拟 dom
+date: 2024-05-01
+tags:
+  - vue
+---
 
 ## 💡 什么是虚拟 DOM？
 
@@ -82,13 +87,13 @@ const div = document.createElement('div')
 
 1. JavaScript 引擎处理
 
-   - 将代码识别为特殊的 API 调用
-   - 向浏览器内核发送创建元素的请求
+    - 将代码识别为特殊的 API 调用
+    - 向浏览器内核发送创建元素的请求
 
 2. 浏览器处理
 
-   - 接收请求并通过 C++ 实现创建 DOM 元素
-   - 创建完成后返回对应的 JavaScript 对象
+    - 接收请求并通过 C++ 实现创建 DOM 元素
+    - 创建完成后返回对应的 JavaScript 对象
 
    ```txt
     A[JavaScript 代码] -> B[C++ 方法调用]
@@ -99,12 +104,13 @@ const div = document.createElement('div')
 ## Vue 中的虚拟 DOM
 
 ```vue
-<script setup>
-import { h } from 'vue'
-import Child from './child.vue'
 
-const vNode = h(Child)
-console.log('🚀 ~ vNode:', vNode)
+<script setup>
+  import {h} from 'vue'
+  import Child from './child.vue'
+
+  const vNode = h(Child)
+  console.log('🚀 ~ vNode:', vNode)
 </script>
 ```
 
@@ -140,7 +146,11 @@ app.appendChild(infoDiv)
 
 // 2. 声明式编程
 app.innerHTML = '
-<div class="message">hello</div>
+    < div
+
+class
+
+= "message" > hello < /div>
 <div class="info">world</div>
 '
 ```
@@ -181,7 +191,7 @@ app.innerHTML = '
 console.time('time')
 const arr = []
 for (let i = 0; i < 10000000; i++) {
-  const div = { a: 1 }
+  const div = {a: 1}
   arr.push(div)
 }
 console.timeEnd('time')
@@ -196,27 +206,28 @@ for (let i = 0; i < 10000000; i++) {
 console.timeEnd('time')
 ```
 
-| 操作类型            | 耗时          | 说明                     |
-| ------------------- | ------------- | ------------------------ |
+| 操作类型            | 耗时           | 说明             |
+|-----------------|--------------|----------------|
 | JavaScript 对象创建 | ⚡️ 170-200ms | 创建一千万个普通 JS 对象 |
-| DOM 节点创建        | 🐢 2000+ms    | 创建一千万个 DOM 节点    |
+| DOM 节点创建        | 🐢 2000+ms   | 创建一千万个 DOM 节点  |
 
 `document.createElement('div')` 会被识别为 API 调用，等待渲染器引擎反馈结果，所以性能差距很大
 
 ## 🎯 虚拟 DOM 的性能优势
 
 ```html
+
 <body>
-  <div class="container"></div>
-  <button id="update">update</button>
+<div class="container"></div>
+<button id="update">update</button>
 
-  <script>
-    const container = document.querySelector('.container')
+<script>
+  const container = document.querySelector('.container')
 
-    update.addEventListener('click', () => {
-      container.innerHTML = new Date().toLocaleString()
-    })
-  </script>
+  update.addEventListener('click', () => {
+    container.innerHTML = new Date().toLocaleString()
+  })
+</script>
 </body>
 ```
 
