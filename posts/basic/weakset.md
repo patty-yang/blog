@@ -1,4 +1,9 @@
-## WeakSet 弱引用集合
+---
+title: WeakSet 弱引用集合
+date: 2020-09-15
+tags:
+   - js
+---
 
 WeakSet 是一种特殊的集合类型，具有以下特点：
 

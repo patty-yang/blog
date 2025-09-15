@@ -1,4 +1,9 @@
-# 🔄 Web History API
+---
+title: Web History API
+date: 2020-09-15
+tags:
+  - js
+---
 
 ## 📝 基本概念
 

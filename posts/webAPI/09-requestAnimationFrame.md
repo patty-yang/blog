@@ -1,4 +1,9 @@
-# 🎬 requestAnimationFrame
+---
+title: requestAnimationFrame
+date: 2020-09-15
+tags:
+  - js
+---
 
 ## 💡 概述
 

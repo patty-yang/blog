@@ -23,12 +23,12 @@
 <!-- 之所以将代码写在 md 里面，而非单独封装为 Vue 组件，因为 aside 不会动态刷新，参考 https://github.com/vuejs/vitepress/issues/2686 -->
 <script setup lang="ts">
 import {computed} from 'vue';
-import {data as posts} from '../utils/posts.data.mjs'; 
+import {data as posts} from  '../.vitepress/theme/posts.data.mjs';
 
 const postGroups = computed(() => {
   const groups = new Map<string, typeof posts>();
   posts.forEach((post) => {
-    const {url, date} = post
+    const {url, date} = post;
     const name = url.split('/')[2];
     const title = `${date.year}/${Number.isNaN(+name) ? name : ''}`;
 
@@ -70,7 +70,7 @@ const postGroups = computed(() => {
 	position: relative;
 	top: 0;
 	left: 0;
-
+   
 	.post-title {
 		position: absolute;
 		top: -6px;
@@ -80,6 +80,7 @@ const postGroups = computed(() => {
 		opacity: .16;
 		font-size: 86px;
 		font-weight: 900;
+
 	}
 }
 
@@ -90,6 +91,7 @@ const postGroups = computed(() => {
 
   > a {
 		font-weight: 400;
+        text-decoration: none;
 	}
 
   .post-date {
