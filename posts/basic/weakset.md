@@ -1,6 +1,6 @@
 ---
 title: WeakSet 弱引用集合
-date: 2020-09-15
+date: 2022-09-15
 tags:
    - js
 ---

@@ -1,6 +1,6 @@
 ---
 title: MutationObserver - 监听 DOM 变化的利器
-date: 2020-09-15
+date: 2021-09-15
 tags:
   - js
 ---

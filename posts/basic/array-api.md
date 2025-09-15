@@ -1,6 +1,6 @@
 ---
 title: 数组新 API
-date: 2020-09-15
+date: 2022-09-15
 tags:
   - js
 ---
