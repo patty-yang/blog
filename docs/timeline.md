@@ -23,7 +23,7 @@
 <!-- 之所以将代码写在 md 里面，而非单独封装为 Vue 组件，因为 aside 不会动态刷新，参考 https://github.com/vuejs/vitepress/issues/2686 -->
 <script setup lang="ts">
 import {computed} from 'vue';
-import {data as posts} from  '../.vitepress/theme/posts.data.mjs';
+import {data as posts} from  '../.vitepress/theme/utils/posts.data.mts';
 
 const postGroups = computed(() => {
   const groups = new Map<string, typeof posts>();

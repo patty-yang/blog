@@ -1,5 +1,8 @@
 import {defineConfig} from 'vitepress'
-import {createSideBar} from '..'
+
+import {createSideBar} from './theme/utils/createSideBar'
+
+const sideBarConfig = createSideBar()
 
 export default defineConfig({
   // https://vitepress.dev/reference/site-config#ignoredeadlinks
@@ -13,23 +16,9 @@ export default defineConfig({
     logo: '/logo.png',
     nav: [
       {text: '从古至今', link: '/docs/timeline'},
-      {text: '笔记', link: '/docs/white-code/'},
-      {
-        text: '归档',
-        items: [
-          {text: '项目', link: '/docs/project/form'},
-          {text: '网络', link: '/docs/network/'},
-          {text: '组件库', link: '/docs/library/'},
-        ]
-      },
-
-      // { text: 'build', link: '/docs/build/' },
+      {text: "笔记", link: '/notes/basic/js-basics'},
     ],
-    sidebar: {
-      ...createSideBar('library'),
-      ...createSideBar('project'),
-      ...createSideBar('network'),
-    },
+    sidebar: sideBarConfig,
     // socialLinks: [
     //   {
     //     icon: 'github',
