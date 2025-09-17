@@ -15,7 +15,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     logo: '/logo.png',
     nav: [
-      {text: '从古至今', link: '/docs/timeline'},
+      // {text: '从古至今', link: '/docs/timeline'},
       {text: "笔记", link: '/notes/basic/js-basics'},
     ],
     sidebar: sideBarConfig,
