@@ -8,7 +8,7 @@
 - [🗺️ Map](js/map)
 - [⭐ Set](js/set)
 
-#### Vue 响应式原理
+<!-- #### Vue 响应式原理
 
 - [🔄 响应式系统（上）](vue/01-响应式)
   - 拦截器实现：get、set、delete
@@ -26,5 +26,5 @@
   - 响应式数据与函数的关联关系
     - ![image](https://raw.githubusercontent.com/patty-yang/pic/img/test/202503211308033.png)
   - effect 回调交由外部处理 `lazy`
-  - effect 更新派发交由外部处理 `scheduler`
+  - effect 更新派发交由外部处理 `scheduler` -->
 </div>

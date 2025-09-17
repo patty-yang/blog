@@ -1,39 +1,36 @@
-# 从头开始，重新出发 🚀
+## 顺序
 
-> 📚 **知其然，更要知其所以然**
->
-> **_深入原理，掌握本质_**
+[模版](模版)
 
-> 💡 **唯有透彻理解，方能游刃有余**
->
-> **_学习之道，在于求真_**
+[虚拟 DOM](虚拟DOM)
 
----
+[响应式数据](响应式数据)
 
-<div class="learning-path">
+[组件渲染](组件渲染)
 
-### 1. 🤔 带着问题探索源码的奥秘
+[关于 pinia](关于pinia)
 
-<div class="question-section">
+<!-- [createApp]()
 
-#### 🌟 什么是虚拟 DOM
+[mount]() TODO Rewrite
 
-- [🔍 深入理解虚拟 DOM](04-虚拟DOM)
-  - 📑 真实 DOM
-  - 🚀 虚拟 DOM
-  - 💡 优势
+[render]()
 
-#### 🎨 什么是模版
+[ref|reactive]()
 
-- [📝 Vue 模板机制解析](05-模版)
-  - 渲染函数
-  - 模版编译
-  - 编译时机
+[computed]()
 
-#### ⚡ 什么是响应式
 
-- [🔄 响应式](响应式/01-vue)
-  - reactive
-  - effect 
-</div>
-</div>
+### baseHandlers get 中 key 的类型
+
+```ts
+export enum ReactiveFlags {
+  SKIP = '__v_skip',
+  IS_REACTIVE = '__v_isReactive',
+  IS_READONLY = '__v_isReadonly',
+  IS_SHALLOW = '__v_isShallow',
+  RAW = '__v_raw'
+}
+``` -->
+
+<Gitalk />

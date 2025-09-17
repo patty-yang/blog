@@ -17,6 +17,7 @@
   "devDependencies": {
     "@types/node": "^20.10.6",
     "husky": "^9.0.11",
+    "sass": "^1.92.1",
     "vitepress": "1.0.0-rc.35",
     "vue": "^3.4.5"
   },

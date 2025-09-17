@@ -1,0 +1,8 @@
+/** 链接样式 */
+.VPDoc a {
+    text-decoration: none !important;
+}
+
+.VPDoc a:hover {
+    text-decoration: underline !important;
+}
